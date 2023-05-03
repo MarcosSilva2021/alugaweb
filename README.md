@@ -24,9 +24,6 @@
     <li>Javascript </li>
     <li>Node.js - biblioteca Express como plataforma back-end</li>
     <li>MySQL como banco de dados</li>
-    <li></li>
-    <li></li>
-    <li></li>
 </ul>
 
 
@@ -42,6 +39,7 @@
     <li>items</li>   
 </ul>
 
+
 <h2><strong> Testando as rotas</strong></h2>
 <ul>
     <li>
@@ -55,19 +53,22 @@
     <li>ownner: DELETE: http://localhost:3000/api/owner/2222</li>
 </ul>
 
+
 <h2>
 🛑 Futuras atualizações
 </h2>
 
 <ul>
-    <h2><strong>Ataulizaçoes back-end</strong></h2>
-    <li>_______________________________________________</li>
+    <h2>
+    <strong>Ataulizaçoes back-end</strong>
+    </h2>    
     <li>bcrypt - biblioteca para criptografia de senhas</li>
     <li>middleware - cookie-session - biblioteca do Express</li>
     <li>multer - biblioteca para upload de arquivos no sistema</li>
     <li></li>
-    <h2><strong>Ataulizaçoes front-end</strong></h2>
-    <li>_______________________________________________</li>
+    <h2>
+    <strong>Ataulizaçoes front-end</strong>
+    </h2>
     <li>Incluir paginas de acesso front-end para cada operação de crud - da entidade owners</li>       
     <li>bcrypt - biblioteca para criptografia de senhas</li>
     <li>middleware - cookie-session - biblioteca do Express</li>
