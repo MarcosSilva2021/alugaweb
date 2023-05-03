@@ -23,7 +23,7 @@ module.exports = {
         res.json(json);
     },
 
-    // metodo que busca um unico proprieatario pelo id
+    // metodo que busca um unico proprietario pelo id
     buscarUm: async (req, res) => {
         let json = {error:'', result:{}};
 
@@ -83,6 +83,15 @@ module.exports = {
         }else{
             json.error = 'Campos não enviados';
         }
+        res.json(json);
+    },
+
+    // excluir um registro da tabela - owners - proprieatario
+    excluir: async(req, res) => {
+        let json = {error:'', result:{}};
+
+        await OwnerService.excluir(req.params.codigo);
+        
         res.json(json);
     },
 }

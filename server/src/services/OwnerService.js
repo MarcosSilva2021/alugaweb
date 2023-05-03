@@ -2,6 +2,7 @@
 const db = require('../db');
 
 module.exports = {
+    //buscar todos os registro de owners
     buscarTodos: () => {
         return new Promise((aceito, rejeitado)=>{
 
@@ -12,7 +13,7 @@ module.exports = {
         });
     },
     
-    //buscar um unico proprietario
+    //buscar um unico registro de proprietario
     buscarUm: (codigo) => {
         return new Promise((aceito, rejeitado)=>{
 
@@ -27,7 +28,7 @@ module.exports = {
         });
     },
 
-    //inserindo um proprietario ao bd
+    //inserindo um registro de proprietario
     inserir: (email, password, name, is_admin)=> {
         return new Promise((aceito, rejeitado)=> {
 
@@ -41,7 +42,7 @@ module.exports = {
         });
     },
 
-    // alterando o codigo
+    // alterando um registro de proprietario
     alterar:(codigo, email, password, name, is_admin)=> {
         return new Promise((aceito, rejeitado)=> {
             db.query('UPDATE owners SET email = ?, password = ?, name = ?, is_admin = ? WHERE id = ?',
@@ -53,4 +54,24 @@ module.exports = {
             );
         });
     },
+
+    // excluir um registro de proprietario
+    excluir: (codigo)=> {
+        return new Promise((aceito, rejeitado)=> {
+            db.query('DELETE FROM owners WHERE id = ?',[codigo], (error, results ) =>{
+                if(error){ rejeitado(error); return; }
+                aceito(results);
+            });
+        });
+    },
+
+     // EXCLUIR TODOS os registro de proprietario -EXCLUI TODOS
+    excluirTodos: ()=> {
+        return new Promise((aceito, rejeitado)=> {
+            db.query('DELETE FROM owners WHERE id = ?',(error, results ) =>{
+                if(error){ rejeitado(error); return; }
+                aceito(results);
+            });
+        });
+    }
 };

@@ -4,7 +4,6 @@
 
 <p>Este aplicativo está sendo desenvolvido como proposta de projeto para a disciplina de projeto integrado.<br>
 
-
 <h2>
 🛑 Pré-requistos
 </h2>
@@ -28,21 +27,6 @@
     <li></li>
     <li></li>
     <li></li>
-    <h2><strong>Ataulizaçoes back-end</strong></h2>
-    <li>knex.js como biblioteca de acesso ao banco de dados</li>    
-    <li>bcrypt - biblioteca para criptografia de senhas</li>
-    <li>middleware - cookie-session - biblioteca do Express</li>
-    <li>multer - biblioteca para upload de arquivos no sistema</li>
-    <li></li>
-    <h2><strong>Ataulizaçoes front-end</strong></h2>
-    <li>Incluir paginas de acesso front-end para cada operação de crud - da entidade owners</li>       
-    <li>bcrypt - biblioteca para criptografia de senhas</li>
-    <li>middleware - cookie-session - biblioteca do Express</li>
-    <li>multer - biblioteca para upload de arquivos no sistema</li>
-    <li>Incluir visões de usuario</li>
-    <li>Incluir visões de usuario paginas de acesso back-end para cada operação</li>
-    <li>Incluir visões de usuario paginas de acesso front-end para cada operação</li>
-    <li>Fazer deploy da aplicação web</li>
 </ul>
 
 
@@ -58,13 +42,40 @@
     <li>items</li>   
 </ul>
 
-<h2><strong>Buscas e testes</strong></h2>
+<h2><strong> Testando as rotas</strong></h2>
 <ul>
+    <li>
+    plataforma te teste :  https://resttesttest.com/ 
+    </li>
+    <li>Rotas</li>
     <li>ownner: GET: http://localhost:3000/api/owner/2222</li>
     <li>ownner: GET: http://localhost:3000/api/owners</li>
     <li>ownner: POST: http://localhost:3000/api/owner/2222</li>
-    <li>ownner: POST: parametros de inserir com POST: (email, password, name, is_admin) </li>       
-    <li>ownner: PUT: http://localhost:3000/api/owner/2222</li>
+    <li>             parametros de inserir com POST: (email, password, name, is_admin) </li>       
+    <li>ownner: DELETE: http://localhost:3000/api/owner/2222</li>
+</ul>
+
+<h2>
+🛑 Futuras atualizações
+</h2>
+
+<ul>
+    <h2><strong>Ataulizaçoes back-end</strong></h2>
+    <li>_______________________________________________</li>
+    <li>bcrypt - biblioteca para criptografia de senhas</li>
+    <li>middleware - cookie-session - biblioteca do Express</li>
+    <li>multer - biblioteca para upload de arquivos no sistema</li>
+    <li></li>
+    <h2><strong>Ataulizaçoes front-end</strong></h2>
+    <li>_______________________________________________</li>
+    <li>Incluir paginas de acesso front-end para cada operação de crud - da entidade owners</li>       
+    <li>bcrypt - biblioteca para criptografia de senhas</li>
+    <li>middleware - cookie-session - biblioteca do Express</li>
+    <li>multer - biblioteca para upload de arquivos no sistema</li>
+    <li>Incluir visões de usuario</li>
+    <li>Incluir visões de usuario paginas de acesso back-end para cada operação</li>
+    <li>Incluir visões de usuario paginas de acesso front-end para cada operação</li>
+    <li>Fazer deploy da aplicação web</li>
 </ul>
 
 
