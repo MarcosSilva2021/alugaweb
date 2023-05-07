@@ -59,7 +59,7 @@ module.exports = {
         let codigo = req.params.codigo;
         let name = req.body.name;
 
-        if (name){
+        if (codigo && name){
             await CategoriesService.alterar(codigo, name);
             json.result = {
                 codigo,                

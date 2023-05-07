@@ -45,7 +45,7 @@
     <li>
     plataforma te teste :  https://resttesttest.com/ 
     </li>
-    <li>Rotas</li>
+    <li>Métodos HTTP e endereço de Rotas a ser inseridos nas buscas</li>
     <li>ownner: GET: http://localhost:3000/api/owner/2222</li>
     <li>ownner: GET: http://localhost:3000/api/owners</li>
     <li>ownner: POST: http://localhost:3000/api/owner/2222</li>

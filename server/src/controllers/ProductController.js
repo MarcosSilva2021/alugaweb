@@ -38,7 +38,7 @@ module.exports = {
         res.json(json);
     },
 
-    //inserir um propriatario no bd
+    //inserir um produto no bd
     inserir: async(req, res) => {
         let json = {error:'', result:{}};
       
@@ -49,7 +49,7 @@ module.exports = {
         let category_id = req.body.category_id;
         
         if (name && description && photo && price && category_id){
-            let productCodigo = await OwnerService.inserir(name, description, photo, price, category_id);
+            let productCodigo = await ProductsService.inserir(name, description, photo, price, category_id);
             json.result = {                 // retorna o objeto
                 codigo: productCodigo,
                 name,
@@ -76,7 +76,7 @@ module.exports = {
         let category_id = req.body.category_id;
    
         if (codigo && name && description && photo && price && category_id){
-            await ProductService.alterar(codigo, name, description, photo, price, category_id);
+            await ProductsService.alterar(codigo, name, description, photo, price, category_id);
             json.result = {
                 codigo,
                 name, 
@@ -95,7 +95,7 @@ module.exports = {
     excluir: async(req, res) => {
         let json = {error:'', result:{}};
 
-        await ProductService.excluir(req.params.codigo);
+        await ProductsService.excluir(req.params.codigo);
         
         res.json(json);
     },

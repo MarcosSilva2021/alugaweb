@@ -43,9 +43,9 @@ module.exports = {
     },
 
     // alterando um registro de produto
-    alterar:(codigo, name, description, photo, price, category_id)=> {
+    alterar:( codigo, name, description, photo, price, category_id)=> {
         return new Promise((aceito, rejeitado)=> {
-            db.query('UPDATE products SET name = ?, description = ?, photo = ?, price = ?, category_id WHERE id = ?',
+            db.query('UPDATE products SET name = ?, description = ?, photo = ?, price = ?, category_id = ? WHERE id = ?',
                 [name, description, photo, price, category_id, codigo],
                 (error, results) => {
                     if(error){ rejeitado(error); return; }

@@ -45,7 +45,7 @@ module.exports = {
         let name = req.body.name;        
         
         if (email && password && name){
-            let clientCodigo = await OwnerService.inserir(email , password , name);
+            let clientCodigo = await ClientService.inserir(email , password , name);
             json.result = {                 // retorna o objeto
                 codigo: clientCodigo,
                 email,
@@ -68,7 +68,7 @@ module.exports = {
         let name = req.body.name;
        
         if (codigo && email && password && name){
-            await OwnerService.alterar(codigo, email, password, name);
+            await ClientService.alterar(codigo, email, password, name);
             json.result = {
                 codigo,
                 email,

@@ -5,13 +5,21 @@ const express = require('express');
 const cors = require('cors');// dependencia - trabalhar com api - acesso - recursor de site de outros dominios
 const bodyParser = require('body-parser');  // converte o body de requisiçoes em outros formatos
 
-const routes = require('./routes') //determinando as rotas p o servidor
+//determinando as rotas p o servidor
+const OwnersRoutes = require('./routes/OwnerRoutes');
+const ProductRoutes = require('./routes/ProductRoutes');
+const ClientRoutes = require('./routes/ClientRuotes');
+const CategoriesRoutes = require('./routes/CategoriesRoutes');
 
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false})); //conf
 
-server.use('/api', routes); //prefixo para nos enereços de rota
+// uso routes e já usa o prefixo(/api) nos enereços de rota
+server.use('/api', OwnersRoutes); 
+server.use('/api', ProductRoutes);
+server.use('/api', ClientRoutes);
+server.use('/api', CategoriesRoutes);
 
 //função reduzida- anonima  p ler arquivo variaveis.env
 server.listen(process.env.PORT, ()=>{

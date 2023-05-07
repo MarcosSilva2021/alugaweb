@@ -2,8 +2,9 @@
 const express = require('express');
 const router = express.Router();
 
-const OwnerController = require('./controllers/OwnerController');
+const OwnerController = require('./../controllers/OwnerController');
 
+// ---- TODAS AS ROTAS DE OWNER ---------
 // rota p buscar todos o proprietarios
 router.get('/owners', OwnerController.buscarTodos);
 // buscar um registro de proprietario pelo id como parametro
@@ -14,8 +15,5 @@ router.post('/owner', OwnerController.inserir);
 router.put('/owner/:codigo', OwnerController.alterar);
 // deletar um registro de owner no bd
 router.delete('/owner/:codigo', OwnerController.excluir);
-
-
-
 
 module.exports = router;
