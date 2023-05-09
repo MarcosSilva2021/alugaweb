@@ -21,7 +21,7 @@ function App() {
         <h1> Header do site</h1>
         <nav>
           <Link to="/">Home</Link>      
-          <Link to="/private">Página privada</Link>
+          <Link to="/private">Página de Login</Link>
           {auth.user && <button onClick={handleLogout}>Sair</button>}
         </nav>
       </header>
