@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const Login = () => {
-    const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext);   //usando o contexto para acessar o login
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ export const Login = () => {
         if (email && password) {
             const isLogged = await auth.signin(email, password);
             if (isLogged) {
-                navigate('/');
+                navigate('/');  // se der certo redireciomn p está pagina
             } else {
                 alert("Não deu certo.");
             }
