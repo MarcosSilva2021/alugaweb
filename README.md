@@ -46,11 +46,11 @@
     plataforma te teste :  https://resttesttest.com/ 
     </li>
     <li>Métodos HTTP e endereço de Rotas a ser inseridos nas buscas</li>
-    <li>ownner: GET: http://localhost:3000/api/owner/2222</li>
-    <li>ownner: GET: http://localhost:3000/api/owners</li>
-    <li>ownner: POST: http://localhost:3000/api/owner/2222</li>
+    <li>ownner: GET: http://localhost:7000/api/owner/2222</li>
+    <li>ownner: GET: http://localhost:7000/api/owners</li>
+    <li>ownner: POST: http://localhost:7000/api/owner/2222</li>
     <li>             parametros de inserir com POST: (email, password, name, is_admin) </li>       
-    <li>ownner: DELETE: http://localhost:3000/api/owner/2222</li>
+    <li>ownner: DELETE: http://localhost:7000/api/owner/2222</li>
 </ul>
 
 

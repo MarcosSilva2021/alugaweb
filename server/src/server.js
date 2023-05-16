@@ -10,6 +10,7 @@ const OwnersRoutes = require('./routes/OwnerRoutes');
 const ProductRoutes = require('./routes/ProductRoutes');
 const ClientRoutes = require('./routes/ClientRuotes');
 const CategoriesRoutes = require('./routes/CategoriesRoutes');
+const LoginRouters = require('./routes/LoginRoutes');       
 
 const server = express();
 server.use(cors());
@@ -20,6 +21,8 @@ server.use('/api', OwnersRoutes);
 server.use('/api', ProductRoutes);//vai ser publica
 server.use('/api', ClientRoutes);
 server.use('/api', CategoriesRoutes);
+server.use('/', LoginRouters);
+//server.use('/api', LoginRouters);
 
 //função reduzida- anonima  p ler arquivo variaveis.env
 server.listen(process.env.PORT, ()=>{
