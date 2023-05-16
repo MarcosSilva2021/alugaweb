@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import './App.css';
+import './App.css';// estilo global
 import { Route, Routes, Link } from 'react-router-dom';
 import {Home} from './pages/Home';
 import {Private} from './pages/Private';
@@ -17,8 +17,9 @@ function App() {
 
   return (
     <div className="App">
+      
       <header>
-        <h1> Header do site</h1>
+        <h1> Aluga web</h1>
         <nav>
           <Link to="/">Home</Link>      
           <Link to="/private">Página de Login</Link>

@@ -17,7 +17,7 @@ server.use(bodyParser.urlencoded({extended: false})); //conf
 
 // uso routes e já usa o prefixo(/api) nos enereços de rota
 server.use('/api', OwnersRoutes); 
-server.use('/api', ProductRoutes);
+server.use('/api', ProductRoutes);//vai ser publica
 server.use('/api', ClientRoutes);
 server.use('/api', CategoriesRoutes);
 
