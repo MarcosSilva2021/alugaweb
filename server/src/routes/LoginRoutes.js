@@ -4,7 +4,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { eAdmin} = require('../middlewares/auth');
-const db = require("../models/db_Seq");
+//const db = require("../models/db_Seq");
+const User = require('../models/User');
 
 router.use(express.json());
 
@@ -19,17 +20,32 @@ router.get('/', eAdmin, async (req, res) =>{
         id_usuario_logado: req.id        
     });
 });
-// teste login
+// teste cadastrar
 router.post('/cadastrar', async (req, res) =>{
+    //console.log(req.body);  // recebendo os dados do corpo
+    var dados = req.body;   // salvando os dados na variavel
     // $2a$08$jaHB2XR/Tqfu.KAGPYqCNOLsuX3UbMJuoV.SSjUPI6r80QQVTSl9S
-    const password = await bcrypt.hash("123456",8);
+    //const password = await bcrypt.hash("123456",8);
+    dados.password = await bcrypt.hash(dados.password, 8);  // cryptografando os dados
 
-    console.log(password);
+    //console.log(password);
+    //console.log("Dados:::");
+    //console.log(dados);
 
-    return res.json({
-        erro: false,
-        mensagem: "Cadastrar",        
-    });
+    //cadastrando no bd
+    await User.create(dados)
+    .then(() => {
+        return res.json({
+            erro: false,
+            mensagem: "Usuário cadastrado com sucesso !",        
+        });
+    }).catch(() => {
+        return res.status(400).json({
+            erro: true,
+            mensagem: "Erro: usuário não cadastrado !!",        
+        });
+    })
+    
 });
 // login login
 router.post('/login', async (req, res) =>{
