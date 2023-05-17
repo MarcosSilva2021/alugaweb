@@ -10,11 +10,13 @@ const OwnersRoutes = require('./routes/OwnerRoutes');
 const ProductRoutes = require('./routes/ProductRoutes');
 const ClientRoutes = require('./routes/ClientRuotes');
 const CategoriesRoutes = require('./routes/CategoriesRoutes');
-const LoginRouters = require('./routes/LoginRoutes');       
+const LoginRouters = require('./routes/LoginRoutes');
 
+const { eAdmin} = require('./middlewares/auth');
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false})); //conf
+
 
 // uso routes e já usa o prefixo(/api) nos enereços de rota
 server.use('/api', OwnersRoutes); 

@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { eAdmin} = require('../middlewares/auth');
+const db = require("../models/db_Seq");
 
 router.use(express.json());
 
