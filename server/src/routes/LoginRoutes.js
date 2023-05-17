@@ -3,28 +3,31 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { eAdmin} = require('../middlewares/auth');
 
 router.use(express.json());
-// $2a$08$jaHB2XR/Tqfu.KAGPYqCNOLsuX3UbMJuoV.SSjUPI6r80QQVTSl9S
+
 const LoginController = require('./../controllers/LoginController');
 
 // ---- TODAS AS ROTAS DE OWNER ---------
 // rota home
-router.get('/', async (req, res) =>{
+router.get('/', eAdmin, async (req, res) =>{
     return res.json({
         erro: false,
-        mensagem: "Bem vindos visitantes"
+        mensagem: "Listar owners - proprietarios",
+        id_usuario_logado: req.id        
     });
 });
 // teste login
 router.post('/cadastrar', async (req, res) =>{
+    // $2a$08$jaHB2XR/Tqfu.KAGPYqCNOLsuX3UbMJuoV.SSjUPI6r80QQVTSl9S
     const password = await bcrypt.hash("123456",8);
 
     console.log(password);
 
     return res.json({
         erro: false,
-        mensagem: "Cadastrar"
+        mensagem: "Cadastrar",        
     });
 });
 // login login
@@ -38,16 +41,21 @@ router.post('/login', async (req, res) =>{
         });
     }
 
-    if(!(await bcrypt.compare(req.body.password, "$2a$08$jaHB2XR/Tqfu.KAGPYqCNOLsuX3UbMJuoV.SSjUPI6r80QQVTSl9S")))
+    if(!(await bcrypt.compare(req.body.password, "$2a$08$jaHB2XR/Tqfu.KAGPYqCNOLsuX3UbMJuoV.SSjUPI6r80QQVTSl9S"))){
         return res.status(400).json({
             erro: true,
             mensagem: "Erro: Usuario ou senha incorreta  -- senha!"
         });
+    }    
 
     var token = jwt.sign({id: 1}, "pasteldecarne&caldodecana", {
         //expiresIn: 600 // em segundos 60 * 10 = 10 minutos
-        expiresIn: '7d' // 7 dias
+        //expiresIn: '7d' // 7 dias
+        expiresIn: 300,
+        
+       
     });
+    console.log(id);
 
     return res.json({
         erro: false,
