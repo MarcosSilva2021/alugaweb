@@ -12,13 +12,25 @@ router.use(express.json());
 const LoginController = require('./../controllers/LoginController');
 
 // ---- TODAS AS ROTAS DE OWNER ---------
-// rota home
+// rota lista protegida
 router.get('/', eAdmin, async (req, res) =>{
-    return res.json({
-        erro: false,
-        mensagem: "Listar owners - proprietarios",
-        id_usuario_logado: req.id        
-    });
+    await User.findAll({
+        attributes: ['id', 'name', 'email'],
+        order: [['id',"DESC"]]
+    })
+    .then((users) => {
+        return res.json({
+            erro: false,
+            users,
+            id_usuario_logado: req.userId      
+        });
+    }).catch(() => {
+        return res.status(400).json({
+            erro: true,
+            mensagem: "Erro: Nenhum usuario encontrado !!",        
+        });
+    })
+    
 });
 // teste cadastrar
 router.post('/cadastrar', async (req, res) =>{
@@ -49,31 +61,35 @@ router.post('/cadastrar', async (req, res) =>{
 });
 // login login
 router.post('/login', async (req, res) =>{
-    console.log(req.body);
-
-    if(req.body.email != "testelogin@clke.com.br"){
+    //console.log(req.body);
+    //recebe os dados do bd
+    const user = await User.findOne({
+        attributes: ['id', 'name', 'email', 'password'],
+        where: {
+            email: req.body.email
+        }
+    });
+    //se não encontrar um usuaro com o email acima, faz
+    if(user === null){
         return res.status(400).json({
             erro: true,
-            mensagem: "Erro: Usuario ou senha incorreta -- email!"
+            mensagem: "Erro: Usuario ou senha incorreta ! Nenhum usuário com este e-mail"
         });
     }
-
-    if(!(await bcrypt.compare(req.body.password, "$2a$08$jaHB2XR/Tqfu.KAGPYqCNOLsuX3UbMJuoV.SSjUPI6r80QQVTSl9S"))){
+    // usuario foi encontrado
+    if(!(await bcrypt.compare(req.body.password, user.password ))){
         return res.status(400).json({
             erro: true,
             mensagem: "Erro: Usuario ou senha incorreta  -- senha!"
         });
     }    
 
-    var token = jwt.sign({id: 1}, "pasteldecarne&caldodecana", {
+    var token = jwt.sign({id: user.id}, "pasteldecarne&caldodecana", {
         //expiresIn: 600 // em segundos 60 * 10 = 10 minutos
         //expiresIn: '7d' // 7 dias
-        expiresIn: 300,
-        
-       
+        expiresIn: 300      
     });
-    console.log(id);
-
+    
     return res.json({
         erro: false,
         mensagem: "Login realizado com sucesso",
