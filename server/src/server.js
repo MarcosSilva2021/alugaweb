@@ -4,15 +4,16 @@ require('dotenv').config({path:'variaveis.env'});   // ler arquivo variaveis de 
 const express = require('express');
 const cors = require('cors');// dependencia - trabalhar com api - acesso - recursor de site de outros dominios
 const bodyParser = require('body-parser');  // converte o body de requisiçoes em outros formatos
-
 //determinando as rotas p o servidor
 const OwnersRoutes = require('./routes/OwnerRoutes');
 const ProductRoutes = require('./routes/ProductRoutes');
 const ClientRoutes = require('./routes/ClientRuotes');
 const CategoriesRoutes = require('./routes/CategoriesRoutes');
-const LoginRouters = require('./routes/LoginRoutes');
+//const LoginRouters = require('./routes/LoginRoutes');
+const Login =  require('./routes/Login');
+const ProdutoRoutes =  require('./routes/ProdutoRoutes');
 
-const { eAdmin} = require('./middlewares/auth');
+//const { eAdmin} = require('./middlewares/auth');
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false})); //conf
@@ -23,8 +24,10 @@ server.use('/api', OwnersRoutes);
 server.use('/api', ProductRoutes);//vai ser publica
 server.use('/api', ClientRoutes);
 server.use('/api', CategoriesRoutes);
-server.use('/', LoginRouters);
+//server.use('/', LoginRouters);
 //server.use('/api', LoginRouters);
+server.use('/', Login);
+server.use('/', ProdutoRoutes);
 
 //função reduzida- anonima  p ler arquivo variaveis.env
 server.listen(process.env.PORT, ()=>{

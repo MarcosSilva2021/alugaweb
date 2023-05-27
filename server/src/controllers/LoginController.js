@@ -1,26 +1,72 @@
+const express = require('express');
+const router = express.Router();
 // controle da api
 const LoginService = require('../services/LoginService');   // tras o ownerservice p ownercontroll
-
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { eAdmin} = require('../middlewares/auth');
+//const db = require("../models/db_Seq");
+const User = require('../models/User');
+router.use(express.json());
 
 module.exports = {
 
-    // método para buscar todos os proprietarios do bd
-    buscarTodos: async (req, res) => {
-        let json = {error:'', result:[]};
-
-        let owners = await LoginService.buscarTodos();
-
-        for(let i in owners){
-            json.result.push({
-                id: owners[i].id,
-                email: owners[i].email,
-                password: owners[i].password,
-                name: owners[i].name,
-                is_admin: owners[i].is_admin
+    //fazer login  
+    fazerLogin: async (req, res) =>{
+        //console.log(req.body);
+        //recebe os dados do bd
+        const user = await User.findOne({
+            attributes: ['id', 'name', 'email', 'password'],
+            where: {
+                email: req.body.email
+            }
+        });
+        //se não encontrar um usuaro com o email acima, faz
+        if(user === null){
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Usuario ou senha incorreta ! Nenhum usuário com este e-mail"
             });
         }
+        // usuario foi encontrado
+        if(!(await bcrypt.compare(req.body.password, user.password ))){
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Usuario ou senha incorreta  -- senha!"
+            });
+        }    
+    
+        var token = jwt.sign({id: user.id}, "pasteldecarne&caldodecana", {
+            //expiresIn: 600 // em segundos 60 * 10 = 10 minutos
+            //expiresIn: '7d' // 7 dias
+            expiresIn: 300      
+        });
+        
+        return res.json({
+            erro: false,
+            mensagem: "Login realizado com sucesso",
+            token
+        });
+    },
 
-        res.json(json);
+    // método para buscar todos os proprietarios do bd
+    buscarTodos: async (req, res) => {
+        await User.findAll({
+            attributes: ['id', 'name', 'email'],
+            order: [['id',"DESC"]]
+        })
+        .then((users) => {
+            return res.json({
+                erro: false,
+                users,
+                id_usuario_logado: req.userId      
+            });
+        }).catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Nenhum usuario encontrado !!",        
+            });
+        })
     },
 
     // metodo que busca um unico proprietario pelo id
@@ -35,6 +81,28 @@ module.exports = {
         }
 
         res.json(json);
+    },
+
+    //////// NOVOS TESTES P ACESSAR BD-SEQ
+    buscarUmSeq: async (req, res) => {
+        const user = await User.findOne({
+            attributes: ['id', 'name', 'email', 'password'],
+            where: {
+                id: req.params.id
+            }
+        });
+        //se não encontrar um usuaro com o email acima, faz
+        if(user === null){
+            return res.status(400).json({
+                erro: true,
+                mensagem: " Nenhum usuário "
+            });
+        }
+        // usuario foi encontrado
+        return res.json({
+            erro: false,
+            user                 
+        });
     },
 
     //inserir um propriatario no bd
