@@ -39,7 +39,7 @@ module.exports = {
         var token = jwt.sign({id: user.id}, "pasteldecarne&caldodecana", {
             //expiresIn: 600 // em segundos 60 * 10 = 10 minutos
             //expiresIn: '7d' // 7 dias
-            expiresIn: 300      
+            expiresIn: 3600      
         });
         
         return res.json({
@@ -105,61 +105,65 @@ module.exports = {
         });
     },
 
-    //inserir um propriatario no bd
+    //inserir um usuario no bd
     inserir: async(req, res) => {
-        let json = {error:'', result:{}};
+        var dados = req.body;
 
-        let email = req.body.email;
-        let password = req.body.password;
-        let name = req.body.name;
-        let is_admin = req.body.is_admin;
-        
-        if (email && password && name && is_admin){
-            let ownerCodigo = await LoginService.inserir(email , password , name , is_admin);
-            json.result = {                 // retorna o objeto
-                codigo: ownerCodigo,
-                email,
-                password,
-                name,
-                is_admin
-            };
-        }else{
-            json.error = 'Campos não enviados';
-        }
-        res.json(json);
+        //cadastrando no bd
+        await User.create(dados)
+        .then(() => {
+            return res.json({
+                erro: false,
+                mensagem: " usuario cadastrado com sucesso !",        
+            });
+        }).catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Usuario não cadastrado !!",        
+            });
+        })
     },
 
     // alterar dados do BD
     alterar: async(req, res) => {
-        let json = {error:'', result:{}};
-
-        let codigo = req.params.codigo;
-        let email = req.body.email;
-        let password = req.body.password;
-        let name = req.body.name;
-        let is_admin = req.body.is_admin;
-
-        if (codigo && email && password && name && is_admin){
-            await LoginService.alterar(codigo, email, password, name, is_admin);
-            json.result = {
-                codigo,
-                email,
-                password,
-                name,
-                is_admin
-            };
-        }else{
-            json.error = 'Campos não enviados';
-        }
-        res.json(json);
+        // Receber os dados enviados no corpo da requisição
+        var dados = req.body;
+    
+        //cadastrando no bd
+        await User.update(dados, {where: {id: dados.id}})
+        .then(() => {
+            return res.json({
+                erro: false,
+                mensagem: "Usuario alterado com sucesso !",        
+            });
+        }).catch(() => {
+            return res.status(400).json({
+                erro: true,
+                mensagem: "Erro: Usuario não alterado !!",        
+            });
+        })
     },
 
     // excluir um registro da tabela - owners - proprieatario
     excluir: async(req, res) => {
-        let json = {error:'', result:{}};
-
-        await LoginService.excluir(req.params.codigo);
+            // Receber os dados enviados no corpo da requisição
+            const { id } = req.params;
         
-        res.json(json);
+            // Apagar produto usando com Models users
+            await User.destroy({
+                // condição
+                where: {id: id}
+            }).then(() => {
+                return res.status(200).json({
+                    erro: false,
+                    mensagem: "Usuário Excluido !!",        
+                });
+    
+            }).catch(() => {
+                return res.status(400).json({
+                    erro: true,
+                    mensagem: "Erro: Usuário não Excluido !!",        
+                });
+            }); 
     },
 }

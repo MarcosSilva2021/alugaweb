@@ -1,6 +1,7 @@
 // models se comunica o bd - realiza as operações de crud
 const Sequelize = require('sequelize');
 const db = require('./db_Seq');
+//const prodAlugados = require('./Produtos_Alugados');
 
 const User = db.define('users', {
     id: {

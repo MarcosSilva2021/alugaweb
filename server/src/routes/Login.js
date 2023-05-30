@@ -20,8 +20,8 @@ router.get('/owner/:codigo', eAdmin, LoginController.buscarUm);
 //inserir dados --- editando em 23-05-15
 router.post('/inserirusuario', eAdmin, LoginController.inserir);
 // alterar campo(s) de um registro de um proprietario do bd (body)
-router.put('/alterarusuario/:codigo', LoginController.alterar);
+router.put('/alterarusuario/:id', LoginController.alterar);
 //deletar um registro de owner no bd
-router.delete('/deletarusuario/:codigo', LoginController.excluir);
+router.delete('/deletarusuario/:id', LoginController.excluir);
 
 module.exports = router;
