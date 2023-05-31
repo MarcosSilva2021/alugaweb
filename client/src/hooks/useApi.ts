@@ -12,7 +12,8 @@ export const useApi = () => ({
         };*/
         //comunicação com o back-end
         const response = await api.post('/fazerlogin', { token });
-       return response.data;
+        console.log(response); // Ver se recebeu
+       return response.data;       
        
     },
     signin: async (email: string, password: string) => {
@@ -22,7 +23,8 @@ export const useApi = () => ({
             token: '123456789'
         };*/
         //comunicação com o back-end
-        const response = await api.post('/fazerlogin', { email, password });
+            const response = await api.post('/fazerlogin', { email, password });
+            console.log(response);
         return response.data;
     },
     logout: async () => {

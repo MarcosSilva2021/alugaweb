@@ -32,7 +32,7 @@ export const Login = () => {
     return (
         <div id="login">
             <h1 className="title">Login do Sistema</h1>
-            <form className="form">
+            <form className="form" onSubmit={handleLogin} >
                 <div className="field">
                     <label htmlFor="email">Email</label>
                     <input 
