@@ -34,19 +34,32 @@ module.exports = {
                 erro: true,
                 mensagem: "Erro: Usuario ou senha incorreta  -- senha!"
             });
-        }    
+        }
+        //novos
+        var id = user.id;
+        var name = user.name;
+        //var email = user.email;   
     
         var token = jwt.sign({id: user.id}, "pasteldecarne&caldodecana", {
             //expiresIn: 600 // em segundos 60 * 10 = 10 minutos
             //expiresIn: '7d' // 7 dias
             expiresIn: 3600      
         });
-        
-        return res.json({
-            erro: false,
-            mensagem: "Login realizado com sucesso",
-            token
+        return res.json({            
+            id,
+            name,
+           // email,
+            token                    
         });
+        
+       /** return res.json({
+            //erro: false,
+            //mensagem: "Login realizado com sucesso",
+            token,
+            id,
+            email
+            
+        });  */
     },
 
     // método para buscar todos os proprietarios do bd

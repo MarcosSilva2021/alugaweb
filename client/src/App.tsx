@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import './App.css';// estilo global
+//import './App.css';// estilo global
 import { Route, Routes, Link } from 'react-router-dom';
 import {Home} from './pages/Home';
 import {Private} from './pages/Private';
