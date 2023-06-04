@@ -2,6 +2,8 @@ import React, { useState , useEffect, createContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import {api, createSession } from "../services/api";
+
 export const AuthContext = createContext();
 
 // ele colocou authProvicer
@@ -20,28 +22,36 @@ export const AuthProvider = ({children}) => {
         setLoading(false);
     }, []);
 
-    const login = (email, password) => {
-
-        console.log("login auth", {email, password});
+    const login = async (email, password) => {
+        const response = await createSession(email, password );
+        //console.log("login", {email, password});
+        console.log("login", response.data);
+        
 
         //api criar session
 
-        const loggedUser = {
-            id: '123',
-            email,
-        };
+        //const loggedUser = { id: '123', email, };
+     
+        const loggedUser = response.data.users; //  observa se o nome não está o mesmo
+        const token = response.data.token;
 
         localStorage.setItem("user", JSON.stringify(loggedUser));   //convertei p instring
+        localStorage.setItem("token", token);
 
-        if(password === "secret"){
-            setUser(loggedUser);
-            navigate("/");
-        }        
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+
+        setUser(loggedUser);
+        navigate("/");               
     };
 
     const logout = () => {
         console.log("logout");
+
         localStorage.removeItem("user");
+        localStorage.removeItem("token");
+
+        api.defaults.headers.Authorization = null;
+
         setUser(null);
         navigate("/login");
     };

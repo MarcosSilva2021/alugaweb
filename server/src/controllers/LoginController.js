@@ -35,30 +35,26 @@ module.exports = {
                 mensagem: "Erro: Usuario ou senha incorreta  -- senha!"
             });
         }
-        //novos
-        var id = user.id;
-        var name = user.name;
-        //var email = user.email;   
-    
+        var users = {
+            id: user.id,
+            email: user.email
+        }
+        
         var token = jwt.sign({id: user.id}, "pasteldecarne&caldodecana", {
             //expiresIn: 600 // em segundos 60 * 10 = 10 minutos
             //expiresIn: '7d' // 7 dias
             expiresIn: 3600      
         });
-        return res.json({            
-            id,
-            name,
-           // email,
-            token                    
-        });
+       return res.json({         
+            users,             
+            token                   
+        });       
         
        /** return res.json({
             //erro: false,
             //mensagem: "Login realizado com sucesso",
             token,
-            id,
-            email
-            
+                       
         });  */
     },
 

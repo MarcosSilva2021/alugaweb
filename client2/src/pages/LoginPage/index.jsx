@@ -66,7 +66,7 @@ const LoginPage = () => {
                         placeholder="Digite sua senha" />
                 </div>
                 <div className="actions">
-                    <button onClick type="submit">Entrar</button>
+                    <button type="submit">Entrar</button>
                 </div>
             </form>
         </div>
