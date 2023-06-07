@@ -1,5 +1,7 @@
 import React, {useState ,useEffect} from "react";
 
+//import { Table } from "./styles";
+
 const Produtos = () => {
     const [data, setData] = useState([]);
 
