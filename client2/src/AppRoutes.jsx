@@ -4,11 +4,13 @@ import {
     BrowserRouter as Router,
     Route,
     Routes,
-    Navigate
+    Navigate,
+    Link
 } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import Produtos from "./pages/Produtos";
 
 import { AuthProvider, AuthContext } from "./contexts/auth.jsx";
 
@@ -29,11 +31,17 @@ const AppRoutes = () => {
 
     return(
         <Router>
-            <AuthProvider>        
+            <AuthProvider>
+            <nav>
+                <Link to="/home">Homepage--privado-   </Link>      
+                <Link to="/login"> Página de Logig_____Aberta   </Link>
+                <Link to="/produtos">Página de Produtos____Aberta  </Link>
+                
+            </nav>       
                 <Routes>
                     <Route exact path="/login" element={<LoginPage />} />
-                    <Route exact path="/" element={<Private><HomePage /></Private > }/>
-                    
+                    <Route exact path="/home" element={<Private><HomePage /></Private > }/>
+                    <Route exact path="/produtos" element={<Produtos /> }/>
                 </Routes>   
             </AuthProvider>         
         </Router>

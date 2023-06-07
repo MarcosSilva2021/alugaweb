@@ -32,10 +32,10 @@ export const AuthProvider = ({children}) => {
 
         //const loggedUser = { id: '123', email, };
      
-        const loggedUser = response.data.users; //  observa se o nome não está o mesmo
+        const loggedUser = response.data.user0; //  observa se o nome não está o mesmo
         const token = response.data.token;
 
-        localStorage.setItem("user", JSON.stringify(loggedUser));   //convertei p instring
+        localStorage.setItem("user", JSON.stringify(loggedUser));   // converteu p string e gravou no localStorege  
         localStorage.setItem("token", token);
 
         api.defaults.headers.Authorization = `Bearer ${token}`;

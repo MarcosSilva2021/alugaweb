@@ -35,7 +35,7 @@ module.exports = {
                 mensagem: "Erro: Usuario ou senha incorreta  -- senha!"
             });
         }
-        var users = {
+        var user0 = {
             id: user.id,
             email: user.email
         }
@@ -46,7 +46,7 @@ module.exports = {
             expiresIn: 3600      
         });
        return res.json({         
-            users,             
+            user0,             
             token                   
         });       
         
@@ -66,9 +66,9 @@ module.exports = {
         })
         .then((users) => {
             return res.json({
-                erro: false,
+                //erro: false,
                 users,
-                id_usuario_logado: req.userId      
+               // id_usuario_logado: req.userId      
             });
         }).catch(() => {
             return res.status(400).json({
