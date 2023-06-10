@@ -1,12 +1,13 @@
 import React, {useState ,useEffect} from "react";
+import { Link } from "react-router-dom";
+import {Container, ConteudoTitulo, BotaoAcao, ButtonSuccess ,Table, Titulo,  } from "./styles";
 
-//import { Table } from "./styles";
 
 const Produtos = () => {
     const [data, setData] = useState([]);
 
     const getProdutos = async () => {
-        fetch("http://localhost:7000/buscartodospag?page=1")
+        fetch("http://localhost:7000/buscarprodutos")
         .then((response) => response.json())
         .then((responseJson) => (
             //console.log(responseJson),
@@ -20,9 +21,16 @@ const Produtos = () => {
     },[])
 
     return (
-        <div >
-            <h1>Listar Produtos</h1>
-            <table>
+        <Container>
+            <ConteudoTitulo>
+            <Titulo>Listar Produtos</Titulo>
+            <BotaoAcao>
+                <Link to="/produtocad">
+                    <ButtonSuccess>Cadastrar</ButtonSuccess>
+                </Link>
+            </BotaoAcao>
+            </ConteudoTitulo>            
+            <Table>
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -45,8 +53,8 @@ const Produtos = () => {
                         </tr>
                     ))}
                 </tbody>
-            </table>
-        </div>
+            </Table>
+        </Container>
     )
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import {Link} from 'react-router-dom'
 
-import { Container, titulo, AlertaSucess, AlertaDanger } from "./styles";
+import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, ContainerRadio, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonSuccess} from "./styles";
 //import "./styles.css";
 
 const ProdutoCad = () => {
@@ -53,40 +54,44 @@ const ProdutoCad = () => {
                 });
         });
     }
-    /**
-     * fetch('https://www.meusite.com.br/api', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
-     */
-
+ 
     return (
-        <div id="cadastro" >
-            <title>Cadastrar produto</title>
-            <h1 className="title" >Cadastrar produto</h1>
-            {status.type === 'erro'? <p>{status.mensagem }</p> : ""}
-            {status.type === 'sucess'? <p>{status.mensagem }</p> : ""}
-            <form className="form" onSubmit={cadProduto}>
-                <label >Nome: </label>
-                <input type="text" name="name" placeholder="Nome do produto" onChange={valorInput}/><br/><br/>
+        <Container >
+            <ConteudoForm>
+                <ConteudoTitulo>
+                <Titulo>Cadastrar Produto</Titulo>
+                <BotaoAcao>                    
+                    <Link to="/">
+                        <ButtonInfo>listar</ButtonInfo>
+                    </Link>                    
+                </BotaoAcao>
+                </ConteudoTitulo>
+                {status.type === 'erro'? <AlertaDanger>{status.mensagem }</AlertaDanger> : ""}
+                {status.type === 'sucess'? <AlertaSucess>{status.mensagem }</AlertaSucess> : ""}
+                <Form className="form" onSubmit={cadProduto}>
+                    <Label >Nome: </Label>
+                    <Input type="text" name="name" placeholder="Nome do produto" onChange={valorInput}/><br/><br/>
 
-                <label >Preço: </label>
-                <input type="number" name="preco" placeholder="Preço do produto" onChange={valorInput}/><br/><br/>
+                    <Label >Preço: </Label>
+                    <Input type="number" name="preco" placeholder="Preço do produto" onChange={valorInput}/><br/><br/>
+                    
+                    <Label >Disponivel: </Label>
+                    <ContainerRadio>
+                    <input type="radio" name="disponivel" value="1" onChange={valorInput}/> Sim <br/><br/>
+                    <input type="radio" name="disponivel" value="0" onChange={valorInput}/> Não <br/>
+                    </ContainerRadio><br/>
 
-                <label >Disponivel: </label>
-                <input type="number" name="disponivel" placeholder="disponibilidade do produto" onChange={valorInput}/><br/><br/>
+                    <Label >Proprietario: </Label>
+                    <Input type="number" name="idUser" placeholder="Proprietario do produto" onChange={valorInput}/><br/><br/>
 
-                <label >Proprietario: </label>
-                <input type="number" name="idUser" placeholder="Proprietario do produto" onChange={valorInput}/><br/><br/>
+                    <ButtonSuccess type="submit">Cadastrar</ButtonSuccess>
 
-                <button type="submit">Cadastrar</button>
-
-            </form>
-            
-        </div>
+                </Form>
+            </ConteudoForm> 
+        </Container>
     )
 };
 
 export default ProdutoCad;
+
+//<Input type="text" name="disponivel" placeholder="disponibilidade do produto" onChange={valorInput}/>

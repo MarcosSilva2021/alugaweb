@@ -9,7 +9,7 @@ router.use(express.json());
 const ProdutoController = require('./../controllers/ProdutoController');
 
 // rota p buscar todos o proprietarios
-//router.get('/buscarprodutos', ProdutoController.buscarTodos);
+router.get('/buscarprodutos', ProdutoController.buscarTodos);
 // rota p buscar todos os produtos por paginação
 router.get('/buscartodospag', ProdutoController.buscartodospag);
 // rota p buscar todos um usuario do bd_seq

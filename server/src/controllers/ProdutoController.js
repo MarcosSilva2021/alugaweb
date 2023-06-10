@@ -15,7 +15,7 @@ module.exports = {
     buscarTodos: async (req, res) => {
         await Produto.findAll({
             attributes: ['id', 'name', 'preco', 'disponivel', 'idUser'],
-            order: [['id',"DESC"]]
+            order: [['id',"ASC"]]
         })
         .then((produtos) => {
             return res.json({
