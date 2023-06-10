@@ -5,11 +5,7 @@ import AppRoutes from './AppRoutes';
 
 function App() {
   return (
-    <div className="App">
-        <header>
-        <h1> Aluga web</h1>
-        
-        </header>        
+    <div className="App">           
         <AppRoutes />
 
     </div>

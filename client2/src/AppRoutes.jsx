@@ -4,14 +4,15 @@ import {
     BrowserRouter as Router,
     Route,
     Routes,
-    Navigate,
-    Link
+    Navigate,    
 } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import Produtos from "./pages/Produtos";
 import ProdutoCad from "./pages/ProdutoCad";
+import Nav from "./pages/nav";
+import Footer from "./pages/Footer";
 
 import { AuthProvider, AuthContext } from "./contexts/auth.jsx";
 
@@ -33,22 +34,27 @@ const AppRoutes = () => {
     return(
         <Router>
             <AuthProvider>
-            <nav>
-                <Link to="/home">Homepage--privado --  </Link>      
-                <Link to="/login"> Página de Logig_____Aberta -- </Link>
-                <Link to="/">Página de Produtos____Aberta -- </Link>
-                <Link to="/produtocad"> ___Cadastrar___Produtos  </Link>
-                
-            </nav>       
+            <header>
+               <Nav/>                
+            </header>       
                 <Routes>
                     <Route exact path="/login" element={<LoginPage />} />
                     <Route exact path="/home" element={<Private><HomePage /></Private > }/>
                     <Route exact path="/" element={<Produtos /> }/>
                     <Route exact path="/produtocad" element={<ProdutoCad /> }/>
                 </Routes>   
-            </AuthProvider>         
+            </AuthProvider>  
+            <footer><Footer/></footer>       
         </Router>
     )
 }
 
 export default AppRoutes;
+
+/**
+ *              <Link to="/home">Homepage--privado --  </Link>      
+                <Link to="/login"> Página de Logig_____Aberta -- </Link>
+                <Link to="/">Página de Produtos____Aberta -- </Link>
+                <Link to="/produtocad"> ___Cadastrar___Produtos  </Link>
+ * 
+ */

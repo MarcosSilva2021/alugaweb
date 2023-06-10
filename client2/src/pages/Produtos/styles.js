@@ -41,7 +41,7 @@ export const Titulo = styled.h1`
 export const Table = styled.table`
     width: 100%;
     th{
-        background-color: #ffd219;
+        background-color: #31d2f2;
         color: #3e3e3e;
         padding: 10px
     }
