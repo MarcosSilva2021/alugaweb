@@ -11,8 +11,11 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import Produtos from "./pages/Produtos";
 import ProdutoCad from "./pages/ProdutoCad";
-import Nav from "./pages/nav";
-import Footer from "./pages/Footer";
+//import ProdutoVisual from "./pages/ProdutoVisual";
+//import {ProdutoVi} from "./pages/ProdutoVi";
+import {ProdutoVi} from "./pages/ProdutoVi";
+import Nav from "./Components/nav";
+import Footer from "./Components/Footer";
 
 import { AuthProvider, AuthContext } from "./contexts/auth.jsx";
 
@@ -42,6 +45,7 @@ const AppRoutes = () => {
                     <Route exact path="/home" element={<Private><HomePage /></Private > }/>
                     <Route exact path="/" element={<Produtos /> }/>
                     <Route exact path="/produtocad" element={<ProdutoCad /> }/>
+                    <Route path="/buscarproduto/:id" Component={ProdutoVi}/>
                 </Routes>   
             </AuthProvider>  
             <footer><Footer/></footer>       

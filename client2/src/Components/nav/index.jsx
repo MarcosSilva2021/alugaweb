@@ -28,7 +28,12 @@ const Nav = () => {
                 <Link to="/produtocad">
                     <ButtonSuccess>Cadastrar</ButtonSuccess>
                 </Link>
-            </BotaoAcao>       
+            </BotaoAcao>
+            <BotaoAcao>
+                <Link to="/buscarproduto">
+                    <ButtonSuccess>Visualizar Detalhes</ButtonSuccess>
+                </Link>
+            </BotaoAcao>      
             
             </ConteudoTitulo>            
             
