@@ -45,6 +45,20 @@ export const ButtonPrimary = styled.button`
     }
 `;
 
+export const ButtonWarning = styled.button`
+    background-color: #fff;
+    color: #ffc107;
+    padding: 5px 8px;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    &:hover {
+        color: #fff;
+        background-color: #ffc107;
+    }
+`;
+
 export const Titulo = styled.h1`
         color: #3e3e3e;
         font-size: 23px;

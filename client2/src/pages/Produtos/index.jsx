@@ -1,6 +1,6 @@
 import React, {useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
-import {Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonPrimary ,Table, Titulo,  } from "./styles";
+import {Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonPrimary, ButtonWarning ,Table, Titulo,  } from "./styles";
 
 
 const Produtos = () => {
@@ -52,8 +52,11 @@ const Produtos = () => {
                             <td>
                                 <Link to={"/buscarproduto/" + produto.id }>
                                     <ButtonPrimary>Visualizar</ButtonPrimary>
-                                </Link>
-                                  Editar  Apagar</td>
+                                </Link>{" "}
+                                <Link to={"/alterarproduto/" + produto.id }>
+                                    <ButtonWarning>Editar</ButtonWarning>
+                                </Link>{" "}
+                                    Apagar</td>
                         </tr>
                     ))}
                 </tbody>

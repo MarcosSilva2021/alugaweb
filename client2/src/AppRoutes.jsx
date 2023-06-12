@@ -11,9 +11,8 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import Produtos from "./pages/Produtos";
 import ProdutoCad from "./pages/ProdutoCad";
-//import ProdutoVisual from "./pages/ProdutoVisual";
-//import {ProdutoVi} from "./pages/ProdutoVi";
 import {ProdutoVi} from "./pages/ProdutoVi";
+import {ProdutoEdit} from "./pages/ProdutoEdit";
 import Nav from "./Components/nav";
 import Footer from "./Components/Footer";
 
@@ -46,6 +45,7 @@ const AppRoutes = () => {
                     <Route exact path="/" element={<Produtos /> }/>
                     <Route exact path="/produtocad" element={<ProdutoCad /> }/>
                     <Route path="/buscarproduto/:id" Component={ProdutoVi}/>
+                    <Route path="/alterarproduto/:id" Component={ProdutoEdit}/>
                 </Routes>   
             </AuthProvider>  
             <footer><Footer/></footer>       
