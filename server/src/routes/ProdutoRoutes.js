@@ -19,7 +19,8 @@ router.get('/buscarproduto/:id', ProdutoController.buscarUmSeq);
 //inserir dados --- editando em 23-05-15
 router.post('/inserirproduto', ProdutoController.inserir);
 // alterar campo(s) de um registro de um proprietario do bd (body)
-router.put('/alterarproduto/:id', ProdutoController.alterar);
+//router.put('/alterarproduto/:id', ProdutoController.alterar);
+router.put('/alterarproduto/', ProdutoController.alterar);
 //deletar um registro de owner no bd
 router.delete('/deletarproduto/:id', ProdutoController.excluir);
 
