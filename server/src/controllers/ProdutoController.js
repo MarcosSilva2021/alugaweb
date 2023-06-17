@@ -126,6 +126,7 @@ module.exports = {
 
     //inserir um produto no bd
     inserir: async(req, res) => {
+        const cadSucess = true;
         var dados = req.body;
 
         //cadastrando no bd
@@ -133,7 +134,8 @@ module.exports = {
         .then(() => {
             return res.json({
                 erro: false,
-                mensagem: "Produto cadastrado com sucesso !",        
+                mensagem: "Produto cadastrado com sucesso !",
+                cadSucess,        
             });
         }).catch(() => {
             return res.status(400).json({

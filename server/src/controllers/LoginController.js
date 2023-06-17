@@ -28,7 +28,7 @@ module.exports = {
                 mensagem: "Erro: Usuario ou senha incorreta ! Nenhum usuário com este e-mail"
             });
         }
-        // usuario foi encontrado
+        // usuario nao foi encontrado
         if(!(await bcrypt.compare(req.body.password, user.password ))){
             return res.status(400).json({
                 erro: true,
@@ -37,7 +37,8 @@ module.exports = {
         }
         var user0 = {
             id: user.id,
-            email: user.email
+            email: user.email,
+            name: user.name            
         }
         
         var token = jwt.sign({id: user.id}, "pasteldecarne&caldodecana", {
