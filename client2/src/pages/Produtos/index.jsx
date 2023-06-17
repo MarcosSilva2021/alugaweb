@@ -70,10 +70,8 @@ const Produtos = () => {
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>Preco</th>
-                        <th>disponivel</th>
-                        <th>Id_user</th>
-                        <th> Ações</th>
+                        <th>Preco</th>                      
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,9 +79,7 @@ const Produtos = () => {
                         <tr key={produto.id}>
                             <td>{produto.id}</td>
                             <td>{produto.name}</td> 
-                            <td>{produto.preco}</td>
-                            <td>{produto.disponivel}</td>
-                            <td>{produto.idUser}</td>
+                            <td>{produto.preco}</td>        
                             <td>
                                 <Link to={"/buscarproduto/" + produto.id }>
                                     <ButtonPrimary>Visualizar</ButtonPrimary>
@@ -92,11 +88,8 @@ const Produtos = () => {
                                     <ButtonWarning>Editar</ButtonWarning>
                                 </Link>{" "}
                                 <Link to={"/deletarproduto/" + produto.id }>
-                                    <ButtonWarning>Excluir</ButtonWarning>
-                                </Link>{" "}
-                                    <ButtonDanger>Apagar</ButtonDanger>
-                                
-                                  
+                                    <ButtonDanger>Excluir</ButtonDanger>
+                                </Link>                                                       
                             </td>
                         </tr>
                     ))}

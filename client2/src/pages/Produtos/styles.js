@@ -38,7 +38,7 @@ export const ButtonPrimary = styled.button`
     border: 1px solid #0d6efd;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
     &:hover {
         color: #fff;
         background-color: #0d6efd;
@@ -52,7 +52,7 @@ export const ButtonWarning = styled.button`
     border: 1px solid #ffc107;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
     &:hover {
         color: #fff;
         background-color: #ffc107;
@@ -66,7 +66,7 @@ export const ButtonDanger = styled.button`
     border: 1px solid #dc3545;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 18px;
     &:hover {
         color: #fff;
         background-color: #dc3545;

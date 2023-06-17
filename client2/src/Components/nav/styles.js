@@ -141,13 +141,3 @@ export const ButtonSair = styled.button`
         background-color: blue;
     }
 `;
-
-/**
- * radio
- * max-width: 100px;        
-        margin-top: 10px;
-        margin-bottom: 16px;
-        border: 2px solid #badbcc;
-        padding: 10px 10px;
- * 
- */
