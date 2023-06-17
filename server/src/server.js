@@ -4,12 +4,9 @@ require('dotenv').config({path:'variaveis.env'});   // ler arquivo variaveis de 
 const express = require('express');
 const cors = require('cors');// dependencia - trabalhar com api - acesso - recursor de site de outros dominios
 const bodyParser = require('body-parser');  // converte o body de requisiçoes em outros formatos
+
 //determinando as rotas p o servidor
-//const OwnersRoutes = require('./routes/OwnerRoutes');
-//const ProductRoutes = require('./routes/ProductRoutes');
-//const ClientRoutes = require('./routes/ClientRuotes');
-//const CategoriesRoutes = require('./routes/CategoriesRoutes');
-//const LoginRouters = require('./routes/LoginRoutes');
+
 const Login =  require('./routes/Login');
 const ProdutoRoutes =  require('./routes/ProdutoRoutes');
 const ProdAlugados =  require('./routes/ProdAlugadosRoutes');
