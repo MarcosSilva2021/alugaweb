@@ -1,10 +1,16 @@
 import React, {useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
-import {Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonPrimary, ButtonWarning ,Table, Titulo,  } from "./styles";
+import {Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonPrimary, ButtonWarning, ButtonDanger ,Table, Titulo,  } from "./styles";
 
 
 const Produtos = () => {
     const [data, setData] = useState([]);
+    /**
+    // excluir Produto
+    const [status, setStatus] = useState({
+        type: '',
+        mensagem: ''
+    });   */
 
     const getProdutos = async () => {
         fetch("http://localhost:7000/buscarprodutos")
@@ -13,8 +19,37 @@ const Produtos = () => {
             //console.log(responseJson),
             setData(responseJson.produtos)
         ));
-    }
+    };
+    /*
+    // excluir Produto
+    const apagarProduto = async (idProduto) => {
+        //console.log(idProduto);
+        await fetch("http://localhost:7000/deletarproduto/" + idProduto , {
+            method: 'DELETE',
+          })
+        .then((response) => response.json())
+        .then((responseJson) => {
+            if(responseJson.erro){
+                useState({
+                    type: 'erro',
+                    mensagem: responseJson.mensagem
+                });
+            } else{
+                useState({
+                    type: 'success',
+                    mensagem: responseJson.mensagem
+                });
 
+            }
+        })
+        .catch(() => {
+            useState({
+                type: 'erro',
+                mensagem: "erro: Produto não Excluido, tente mais tarde !!"
+            });            
+        });        
+    };
+    */
     useEffect(() =>{
         getProdutos();
 
@@ -56,7 +91,13 @@ const Produtos = () => {
                                 <Link to={"/alterarproduto/" + produto.id }>
                                     <ButtonWarning>Editar</ButtonWarning>
                                 </Link>{" "}
-                                    Apagar</td>
+                                <Link to={"/deletarproduto/" + produto.id }>
+                                    <ButtonWarning>Excluir</ButtonWarning>
+                                </Link>{" "}
+                                    <ButtonDanger>Apagar</ButtonDanger>
+                                
+                                  
+                            </td>
                         </tr>
                     ))}
                 </tbody>

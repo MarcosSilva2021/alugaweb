@@ -59,6 +59,20 @@ export const ButtonWarning = styled.button`
     }
 `;
 
+export const ButtonDanger = styled.button`
+    background-color: #fff;
+    color: #dc3545;
+    padding: 5px 8px;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    &:hover {
+        color: #fff;
+        background-color: #dc3545;
+    }
+`;
+
 export const Titulo = styled.h1`
         color: #3e3e3e;
         font-size: 23px;

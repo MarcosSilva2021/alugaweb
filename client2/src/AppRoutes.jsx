@@ -13,6 +13,7 @@ import Produtos from "./pages/Produtos";
 import ProdutoCad from "./pages/ProdutoCad";
 import {ProdutoVi} from "./pages/ProdutoVi";
 import {ProdutoEdit} from "./pages/ProdutoEdit";
+import {ProdutoExcl} from "./pages/ProdutoExcl";
 import Nav from "./Components/nav";
 import Footer from "./Components/Footer";
 
@@ -46,6 +47,7 @@ const AppRoutes = () => {
                     <Route exact path="/produtocad" element={<ProdutoCad /> }/>
                     <Route path="/buscarproduto/:id" Component={ProdutoVi}/>
                     <Route path="/alterarproduto/:id" Component={ProdutoEdit}/>
+                    <Route path="/deletarproduto/:id" Component={ProdutoExcl}/>
                 </Routes>   
             </AuthProvider>  
             <footer><Footer/></footer>       
