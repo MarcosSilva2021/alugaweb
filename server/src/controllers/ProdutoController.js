@@ -171,6 +171,7 @@ module.exports = {
     excluir: async(req, res) => {
         // Receber os dados enviados no corpo da requisição
         const { id } = req.params;
+        const flag = 0;
         
         // Apagar produto usando com Models users
         await Produto.destroy({
@@ -179,8 +180,10 @@ module.exports = {
         }).then(() => {
             return res.status(200).json({
                 erro: false,
-                mensagem: "pruduto Excluido !!",        
+                mensagem: "Pruduto Excluido !!",
+                flag : 1        
             });
+            
 
         }).catch(() => {
             return res.status(400).json({

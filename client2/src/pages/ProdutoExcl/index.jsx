@@ -11,6 +11,9 @@ export const ProdutoExcl = () => {
     const [data, setData] = useState([]);
     const data2 = {}
 
+    // condição de exclusão
+    let flag = 0;
+
     
 
     // stadus p excluir
@@ -47,22 +50,23 @@ export const ProdutoExcl = () => {
         .then((response) => response.json())
         .then((responseJson) => {
             console.log(responseJson);
-            const cadSucess = false;
+            
            
 
             if(responseJson.erro){
                 setStatus({
                     type: 'erro',
-                    mensagem: responseJson.mensagem
+                    mensagem: responseJson.mensagem,
+                    
                 });
             }else{                
                 setStatus({
                     type: 'success',
-                    mensagem: responseJson.mensagem,                                       
+                    mensagem: responseJson.mensagem,
+                    flag: responseJson.flag                                                           
                 });
-                 //atualizar  os dados em tela
-                 limparform();
-              
+                
+                             
                            
             }
         })
@@ -74,12 +78,20 @@ export const ProdutoExcl = () => {
 
         })     
     };
+
+    if (flag) {
+        return(
+            <>
+            
+            <h1> {status.type === 'success'? <AlertaSucess>{status.mensagem }</AlertaSucess> : ""}</h1>
+            <Link to = "/"><h2><strong> Voltar ao Sistema</strong></h2></Link>
+            </>
+
+        )
+        
+    }
     
-        function limparform(){
-        document.getElementById('nome').value = ""
-    
-    };
-    
+        
 
     return (
         <Container>
@@ -99,7 +111,7 @@ export const ProdutoExcl = () => {
             <ConteudoProduto id="preco">Preço: {data.preco}</ConteudoProduto>
             <ConteudoProduto id="disponivel">Disponivel: sim{data.disponivel}</ConteudoProduto>
             <ConteudoProduto id="iduser">Proprietario: {data.idUser}</ConteudoProduto>
-            <ButtonDanger onClick={() => apagarProduto(id)} >Apagar</ButtonDanger>
+            <ButtonDanger onClick={() => apagarProduto(id)} >Excluir produto do Sistema</ButtonDanger>
         </Container>
 
 

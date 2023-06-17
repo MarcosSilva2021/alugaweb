@@ -16,11 +16,11 @@ router.get('/userslogin', eAdmin, LoginController.buscarTodos);
 // rota p buscar todos um usuario do bd_seq
 router.get('/buscarumseq/:id', LoginController.buscarUmSeq);
 // buscar um registro de proprietario pelo id como parametro
-router.get('/owner/:codigo', eAdmin, LoginController.buscarUm);
+//router.get('/owner/:codigo', eAdmin, LoginController.buscarUm);
 //inserir dados --- editando em 23-05-15
 router.post('/inserirusuario', eAdmin, LoginController.inserir);
 // alterar campo(s) de um registro de um proprietario do bd (body)
-router.put('/alterarusuario/:id', LoginController.alterar);
+router.put('/alterarusuario/', LoginController.alterar);
 //deletar um registro de owner no bd
 router.delete('/deletarusuario/:id', LoginController.excluir);
 

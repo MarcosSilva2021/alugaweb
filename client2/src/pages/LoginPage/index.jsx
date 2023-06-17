@@ -3,6 +3,7 @@ import React, {useState, useContext} from "react";
 import { AuthContext } from "../../contexts/auth";
 
 import "./styles.css";
+import { Link} from "react-router-dom";
 
 const LoginPage = () => {
     const { authenticated, login } = useContext(AuthContext);
@@ -10,30 +11,16 @@ const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    /* const auth = useContext(AuthContext);   //usando o contexto para acessar o login
-     const navigate = useNavigate();
- 
      
- 
-     const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
-         setEmail(event.target.value);
-     }
- 
-     const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
-         setPassword(event.target.value);
-     }
- 
-     const handleLogin = async () => {
-         if (email && password) {
-             const isLogged = await auth.signin(email, password);
-             if (isLogged) {
-                 navigate('/');  // se der certo redireciomn p está pagina
-             } else {
-                 alert("Não deu certo.");
-             }
-         }
-     }
-     */
+    if (authenticated) {
+        return( 
+            <>
+            <h1><p>Usuário Logado no sistema</p></h1>         
+            <Link to = "/"><h2><strong> Voltar ao Sistema</strong></h2></Link>          
+            </>
+        );
+        
+    };
     const hadleSubmit = (e) => {
         e.preventDefault();
         console.log("submit", {email, password});
@@ -43,7 +30,7 @@ const LoginPage = () => {
     return (
         <div id="login">
             <h1 className="title">Login do Sistema</h1>
-            <p>{String(authenticated)}</p>
+            <p>Insira suas credenciais para ter acesso ao sistema</p>
             <form className="form" onSubmit={hadleSubmit}>
                 <div className="field">
                     <label htmlFor="email">Email</label>

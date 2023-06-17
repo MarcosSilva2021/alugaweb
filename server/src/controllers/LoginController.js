@@ -80,7 +80,7 @@ module.exports = {
     },
 
     // metodo que busca um unico proprietario pelo id
-    buscarUm: async (req, res) => {
+   /*buscarUm: async (req, res) => {
         let json = {error:'', result:{}};
 
         let codigo = req.params.codigo; //para pegar o parametro
@@ -91,7 +91,7 @@ module.exports = {
         }
 
         res.json(json);
-    },
+    }, */
 
     //////// NOVOS TESTES P ACESSAR BD-SEQ
     buscarUmSeq: async (req, res) => {
