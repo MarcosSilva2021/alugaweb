@@ -9,10 +9,10 @@ export const ProdutoExcl = () => {
 
     //exibindo os dados em tela
     const [data, setData] = useState([]);
-    const data2 = {}
+    
 
     // condição de exclusão
-    let flag = 0;
+    var flag = 0;
 
     
 
@@ -89,9 +89,7 @@ export const ProdutoExcl = () => {
 
         )
         
-    }
-    
-        
+    };        
 
     return (
         <Container>

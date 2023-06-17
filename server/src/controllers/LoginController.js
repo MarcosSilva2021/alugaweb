@@ -118,7 +118,7 @@ module.exports = {
     //inserir um usuario no bd
     inserir: async(req, res) => {
         var dados = req.body;
-
+        dados.password = await bcrypt.hash(dados.password, 8);
         //cadastrando no bd
         await User.create(dados)
         .then(() => {

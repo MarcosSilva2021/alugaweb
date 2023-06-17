@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import {Link} from 'react-router-dom'
+import React, { useState, useContext } from "react";
+import {Link} from 'react-router-dom';
+import {AuthContext} from "../../contexts/auth";
 
 import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, ContainerRadio, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonSuccess, ButtonClear, DivButton} from "./styles";
 //import "./styles.css";
 
 const ProdutoCad = () => {
-   /** "name": "PC samsung", preco": 120, 	"disponivel": false,	"idUser": 2     */
-   // preenchendo a constante produto dos valores da form
+    const auth = useContext(AuthContext);
+    
     const [produto, setProduto] = useState({
         name: '',
         preco:  '',
@@ -60,15 +61,16 @@ const ProdutoCad = () => {
                 });
         });
     }
- 
+    produto.idUser = parseInt(auth.user?.id , 10);
+
     return (
         <Container >
             <ConteudoForm>
                 <ConteudoTitulo>
-                <Titulo>Cadastrar Produto</Titulo>
+                <Titulo>Cadastrar Produto</Titulo>             
                 <BotaoAcao>                    
                     <Link to="/">
-                        <ButtonInfo>listar</ButtonInfo>
+                        <ButtonInfo>Listar</ButtonInfo>
                     </Link>                    
                 </BotaoAcao>
                 </ConteudoTitulo>
@@ -87,7 +89,7 @@ const ProdutoCad = () => {
                     <input type="radio" name="disponivel" value="0" onChange={valorInput} /> Não <br/>
                     </ContainerRadio><br/>
 
-                    <Label >Proprietario: </Label>
+                    <Label > Este é o seu ID</Label>
                     <Input type="number" name="idUser" placeholder="Proprietario do produto" onChange={valorInput} value={produto.idUser}/><br/><br/>
 
                     <DivButton>
@@ -101,5 +103,3 @@ const ProdutoCad = () => {
 };
 
 export default ProdutoCad;
-
-//<Input type="text" name="disponivel" placeholder="disponibilidade do produto" onChange={valorInput}/>

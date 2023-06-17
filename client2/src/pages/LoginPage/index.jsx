@@ -53,7 +53,8 @@ const LoginPage = () => {
                         placeholder="Digite sua senha" />
                 </div>
                 <div className="actions">
-                    <button type="submit">Entrar</button>
+                    <button type="submit">Entrar</button><br/><br/>
+                    <button type="reset">Limpar</button>
                 </div>
             </form>
         </div>
