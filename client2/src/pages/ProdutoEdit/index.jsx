@@ -41,19 +41,19 @@ export const ProdutoEdit = () => {
             console.log(responseJson);
             if(responseJson.erro){
                 setStatus({
-                    type: 'erro',
+                    type: 'error',
                     mensagem: responseJson.mensagem
                 });
             }else{
                 setStatus({
-                    type: 'sucess',
+                    type: 'success',
                     mensagem: responseJson.mensagem
                 });
             }
         })
         .catch(() => {
             setStatus({
-                type: 'erro',
+                type: 'error',
                 mensagem: "Não funcionou ... Tente mais tarde!"
             });
 
@@ -87,7 +87,8 @@ export const ProdutoEdit = () => {
                 </BotaoAcao>
                 </ConteudoTitulo>
                 {status.type === 'erro'? <AlertaDanger>{status.mensagem }</AlertaDanger> : ""}
-                {status.type === 'sucess'? <AlertaSucess>{status.mensagem }</AlertaSucess> : ""}
+                {status.type === 'success'? <AlertaSucess>{status.mensagem }</AlertaSucess> : ""}
+
                 <Form onSubmit={editProduto}>
                     <Label >Nome: </Label>
                     <Input type="text" name="name" placeholder="Nome do produto" value={name} onChange={e => setName(e.target.value)} />
@@ -104,7 +105,7 @@ export const ProdutoEdit = () => {
                     <Label >Proprietario: </Label>
                     <Input type="number" name="idUser" placeholder="Proprietario do produto" value={idUser} onChange={e => setIduser(e.target.value)}/>
 
-                    <ButtonWarning type="submit">Editar</ButtonWarning>                  
+                    <ButtonWarning type="submit">Editar</ButtonWarning>                         
 
                 </Form>
 
