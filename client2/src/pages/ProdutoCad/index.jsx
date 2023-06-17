@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {Link} from 'react-router-dom'
 
-import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, ContainerRadio, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonSuccess} from "./styles";
+import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, ContainerRadio, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonSuccess, ButtonClear, DivButton} from "./styles";
 //import "./styles.css";
 
 const ProdutoCad = () => {
@@ -45,6 +45,12 @@ const ProdutoCad = () => {
                     type: 'sucess',
                     mensagem: responseJson.mensagem
                 });
+                setProduto({
+                    name: '',
+                    preco:  '',
+                    disponivel: '',
+                    idUser: ''
+                });
             }           
         })
         .catch(() => {
@@ -67,25 +73,27 @@ const ProdutoCad = () => {
                 </BotaoAcao>
                 </ConteudoTitulo>
                 {status.type === 'erro'? <AlertaDanger>{status.mensagem }</AlertaDanger> : ""}
-                {status.type === 'sucess'? <AlertaSucess>{status.mensagem }</AlertaSucess> : ""}
+                {status.type === 'sucess'? <AlertaSucess>{status.mensagem }</AlertaSucess> : "" }
                 <Form className="form" onSubmit={cadProduto}>
                     <Label >Nome: </Label>
-                    <Input type="text" name="name" placeholder="Nome do produto" onChange={valorInput}/><br/><br/>
+                    <Input type="text" name="name" placeholder="Nome do produto" onChange={valorInput} value={produto.name}/><br/><br/>
 
                     <Label >Preço: </Label>
-                    <Input type="number" name="preco" placeholder="Preço do produto" onChange={valorInput}/><br/><br/>
+                    <Input type="number" name="preco" placeholder="Preço do produto" onChange={valorInput} value={produto.preco}/><br/><br/>
                     
                     <Label >Disponivel: </Label>
                     <ContainerRadio>
-                    <input type="radio" name="disponivel" value="1" onChange={valorInput}/> Sim <br/><br/>
-                    <input type="radio" name="disponivel" value="0" onChange={valorInput}/> Não <br/>
+                    <input type="radio" name="disponivel" value="1" onChange={valorInput} /> Sim <br/><br/>
+                    <input type="radio" name="disponivel" value="0" onChange={valorInput} /> Não <br/>
                     </ContainerRadio><br/>
 
                     <Label >Proprietario: </Label>
-                    <Input type="number" name="idUser" placeholder="Proprietario do produto" onChange={valorInput}/><br/><br/>
+                    <Input type="number" name="idUser" placeholder="Proprietario do produto" onChange={valorInput} value={produto.idUser}/><br/><br/>
 
-                    <ButtonSuccess type="submit">Cadastrar</ButtonSuccess>
-
+                    <DivButton>
+                    <ButtonSuccess type="submit">Cadastrar</ButtonSuccess>{" "}
+                    <ButtonClear type="reset">Limpar</ButtonClear>
+                    </DivButton>
                 </Form>
             </ConteudoForm> 
         </Container>

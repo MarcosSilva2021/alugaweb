@@ -82,7 +82,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-    width: 100%;
+    width: 95%;
     padding: 12px;
     border: 1px solid #ccc;
     boder-radius: 4px;
@@ -104,6 +104,26 @@ export const ButtonSuccess = styled.button`
         color: #fff;
         background-color: green;
     }
+`;
+
+export const ButtonClear = styled.button`
+    background-color: #d3d3d3;
+    color: #198754;
+    padding: 8px 12px;
+    border: 1px solid #949494;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    &:hover {
+        color: #fff;
+        background-color: #787878;
+    }
+`;
+
+export const DivButton = styled.section` 
+        width: 95%;       
+        display:flex;
+        justify-content: space-between;                    
 `;
 
 /**
