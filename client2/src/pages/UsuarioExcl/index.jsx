@@ -12,9 +12,7 @@ export const UsuarioExcl = () => {
     
 
     // condição de exclusão
-    var flag = 0;
-
-    
+    var flag = 0;    
 
     // stadus p excluir
     // excluir Produto
@@ -30,29 +28,27 @@ export const UsuarioExcl = () => {
 
     useEffect(() => {
         const getProduto = async () => {
-            await fetch("http://localhost:7000/buscarproduto/" + id3)
+            await fetch("http://localhost:7000/buscarumseq/" + id3)
                 .then((response) => response.json())
                 .then((responseJson) => {
-                    //console.log(responseJson);
-                    setData(responseJson.produto);
+                    console.log(responseJson);
+                    setData(responseJson.user);
                 });
         }
         getProduto();
     }, [id3]);
 
     // excluir Produto -- const editProduto = async e => {
-    const apagarProduto = async (id) => {
+    const apagarProduto = async (id3) => {
         
-        //console.log(idProduto);        
-        await fetch("http://localhost:7000/deletarproduto/" +id ,{
+        console.log("id do formulario: ",id3);        
+        await fetch("http://localhost:7000/deletarusuario/" +id3 ,{
             method: 'DELETE',
           })
         .then((response) => response.json())
         .then((responseJson) => {
-            console.log(responseJson);
-            
+            console.log(responseJson);       
            
-
             if(responseJson.erro){
                 setStatus({
                     type: 'erro',
@@ -63,11 +59,9 @@ export const UsuarioExcl = () => {
                 setStatus({
                     type: 'success',
                     mensagem: responseJson.mensagem,
-                    flag: responseJson.flag                                                           
-                });
-                
-                             
-                           
+                                                                              
+                });          
+                                       
             }
         })
         .catch(() => {
@@ -81,8 +75,7 @@ export const UsuarioExcl = () => {
 
     if (flag) {
         return(
-            <>
-            
+            <>            
             <h1> {status.type === 'success'? <AlertaSucess>{status.mensagem }</AlertaSucess> : ""}</h1>
             <Link to = "/"><h2><strong> Voltar ao Sistema</strong></h2></Link>
             </>
@@ -94,11 +87,11 @@ export const UsuarioExcl = () => {
     return (
         <Container>
             <ConteudoTitulo>
-                <Titulo>Excluir Produtos</Titulo>
+                <Titulo>Excluir Usuário</Titulo>
                 Olá {auth.user?.name}
                 <BotaoAcao>
-                    <Link to="/">
-                        <ButtonInfo>Listar</ButtonInfo>
+                    <Link to="/userslogin">
+                        <ButtonInfo>Listar Usuários</ButtonInfo>
                     </Link>
                 </BotaoAcao>
             </ConteudoTitulo>
@@ -106,25 +99,11 @@ export const UsuarioExcl = () => {
             {status.type === 'success'? <AlertaSucess>{status.mensagem }</AlertaSucess> : ""}{<Link to="/"></Link>}
             <ConteudoProduto id="id">ID: {data.id}</ConteudoProduto>
             <ConteudoProduto id="nome">Nome: {data.name} </ConteudoProduto>
-            <ConteudoProduto id="preco">Preço: {data.preco}</ConteudoProduto>
-            <ConteudoProduto id="disponivel">Disponivel: sim{data.disponivel}</ConteudoProduto>
-            <ConteudoProduto id="iduser">Proprietario: {data.idUser}</ConteudoProduto>
-            <ButtonDanger onClick={() => apagarProduto(id)} >Excluir produto do Sistema</ButtonDanger>
+            <ConteudoProduto id="nome">Email: {data.email} </ConteudoProduto>
+            <ButtonDanger onClick={() => apagarProduto(id3)} >Excluir Usuário do Sistema</ButtonDanger>
         </Container>
 
 
 
     );
 };
-
-
-/**
- //atualizar  os dados em tela - criando outro dados
-            const [data2, setData2] = useState({
-                id: '',
-                name: '',
-                preco: '',
-                disponivel: '',
-                idUser: ''
-            });
- */
