@@ -14,11 +14,19 @@ import ProdutoCad from "./pages/ProdutoCad";
 import {ProdutoVi} from "./pages/ProdutoVi";
 import {ProdutoEdit} from "./pages/ProdutoEdit";
 import {ProdutoExcl} from "./pages/ProdutoExcl";
+
 import Usuarios from "./pages/Usuarios";
 import UsuarioCad from "./pages/UsuarioCad";
 import {UsuarioEdit} from "./pages/UsuarioEdit";
 import {UsuarioVi} from "./pages/UsuarioVi";
 import {UsuarioExcl} from "./pages/UsuarioExcl"
+
+import Operacoes from "./pages/Operacoes";
+import OperacaoCad from "./pages/OperacaoCad";
+import {OperacaoEdit} from "./pages/OperacaoEdit";
+import {OperacoesExcl} from "./pages/OperacoesExcl";
+
+
 import Nav from "./Components/nav";
 import Footer from "./Components/Footer";
 
@@ -59,6 +67,11 @@ const AppRoutes = () => {
                     <Route path="/buscarumseq/:id" Component={UsuarioVi}/>
                     <Route path="/alterarusuario/:id" Component={UsuarioEdit}/>
                     <Route path="/deletarusuario/:id" Component={UsuarioExcl}/>
+
+                    <Route exact path="/buscarprodutalugados" element={<Operacoes /> }/>
+                    <Route exact path="/alugar" element={<OperacaoCad /> }/>                    
+                    <Route path="/alterarprodalugado/:id" Component={OperacaoEdit}/>
+                    <Route path="/excluirprodalugado/:id" Component={OperacoesExcl}/>
                 </Routes>   
             </AuthProvider>  
             <footer><Footer/></footer>       
