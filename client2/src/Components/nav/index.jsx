@@ -31,8 +31,8 @@ const Nav = () => {
             <ConteudoTitulo1>            
                  
                 <BotaoAcao>
-                    <Link to="/home">
-                        <ButtonSuccess>Homepage privado</ButtonSuccess>
+                    <Link to="/buscarprodutalugados">
+                        <ButtonSuccess>Operações Realizadas</ButtonSuccess>
                     </Link>
                 </BotaoAcao>           
                 <BotaoAcao>

@@ -23,7 +23,7 @@ import {UsuarioExcl} from "./pages/UsuarioExcl"
 
 import Operacoes from "./pages/Operacoes";
 import OperacaoCad from "./pages/OperacaoCad";
-import {OperacaoEdit} from "./pages/OperacaoEdit";
+import {OperacaoAlugar} from "./pages/OperacaoAlugar";
 import {OperacoesExcl} from "./pages/OperacoesExcl";
 
 
@@ -69,8 +69,8 @@ const AppRoutes = () => {
                     <Route path="/deletarusuario/:id" Component={UsuarioExcl}/>
 
                     <Route exact path="/buscarprodutalugados" element={<Operacoes /> }/>
-                    <Route exact path="/alugar" element={<OperacaoCad /> }/>                    
-                    <Route path="/alterarprodalugado/:id" Component={OperacaoEdit}/>
+                    <Route exact path="/alugar/" element={<OperacaoCad /> }/>                    
+                    <Route path="/alugar/:id" Component={OperacaoAlugar}/>
                     <Route path="/excluirprodalugado/:id" Component={OperacoesExcl}/>
                 </Routes>   
             </AuthProvider>  

@@ -5,12 +5,6 @@ import {Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonPrimary, Butt
 
 const Operacoes = () => {
     const [data, setData] = useState([]);
-    /**
-    // excluir Produto
-    const [status, setStatus] = useState({
-        type: '',
-        mensagem: ''
-    });   */
 
     const getProdutos = async () => {
         fetch("http://localhost:7000/buscarprodutos")
@@ -58,12 +52,8 @@ const Operacoes = () => {
     return (
         <Container>
             <ConteudoTitulo>
-            <Titulo>Listar Produtos</Titulo>
-            <BotaoAcao>
-                <Link to="/produtocad">
-                    <ButtonSuccess>Cadastrar</ButtonSuccess>
-                </Link>
-            </BotaoAcao>
+            <Titulo>Alugar um Produto</Titulo>
+            
             </ConteudoTitulo>            
             <Table>
                 <thead>
@@ -81,14 +71,12 @@ const Operacoes = () => {
                             <td>{produto.name}</td> 
                             <td>{produto.preco}</td>        
                             <td>
-                                <Link to={"/buscarproduto/" + produto.id }>
-                                    <ButtonPrimary>Visualizar</ButtonPrimary>
+                                
+                                <Link to={"/alugar/" + produto.id }>
+                                    <ButtonPrimary>Alugar este produto</ButtonPrimary>
                                 </Link>{" "}
-                                <Link to={"/alterarproduto/" + produto.id }>
-                                    <ButtonWarning>Editar</ButtonWarning>
-                                </Link>{" "}
-                                <Link to={"/deletarproduto/" + produto.id }>
-                                    <ButtonDanger>Excluir</ButtonDanger>
+                                <Link to={"/excluirprodalugado/" + produto.id }>
+                                    <ButtonDanger>Devolver este produto</ButtonDanger>
                                 </Link>                                                       
                             </td>
                         </tr>
