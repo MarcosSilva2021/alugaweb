@@ -4,14 +4,14 @@ import {Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonPrimary, Butt
 
 
 const Usuarios = () => {
-    const [data, setData] = useState([]); 
-
-    //var token = localStorage.getItem("token", token);
-    //console.log("token :", token);
+    const [data, setData] = useState([]);     
+    
+    var token = localStorage.getItem("token", token);
+    console.log("token :", token);
 
     const getProdutos = async () => {  
-        var token = localStorage.getItem("token", token);
-        console.log("token :", token);
+            
+        
             fetch("http://localhost:7000/userslogin", {
             method: 'GET',
             headers: {
@@ -26,9 +26,9 @@ const Usuarios = () => {
     };
  
     useEffect(() =>{
-        getProdutos();
+        getProdutos();        
 
-    },[])
+    },[token]);
 
     return (
         <Container>

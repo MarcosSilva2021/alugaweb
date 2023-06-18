@@ -17,34 +17,38 @@ export const UsuarioVi = () => {
 
     //console.log("tipo id:",typeof id);
     //console.log("tipo id2: ",typeof id2);
+    var token = localStorage.getItem("token", token);
+        console.log("token :", token);
 
     useEffect(() => {
         const getProduto = async () => {
-            await fetch("http://localhost:7000/buscarproduto/" + id3)
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    //console.log(responseJson);
-                    setData(responseJson.produto);
-                });
+            await fetch("http://localhost:7000/buscarumseq/" + id3, {
+                headers: {'Authorization': 'Bearer ' + token 
+                } 
+            })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                 console.log(responseJson);
+                 setData(responseJson.user);
+            });
         }
         getProduto();
-    }, [id3]);
+    }, [id3],[token]);
 
     return (
         <Container>
             <ConteudoTitulo>
-                <Titulo>Visualizar Produtos</Titulo>
+                <Titulo>Visualizar Clientes</Titulo>
                 <BotaoAcao>
-                    <Link to="/">
+                    <Link to="/userslogin">
                         <ButtonInfo>Listar</ButtonInfo>
                     </Link>
                 </BotaoAcao>
             </ConteudoTitulo>
             <ConteudoProduto>ID: {data.id}</ConteudoProduto>
             <ConteudoProduto>Nome: {data.name}</ConteudoProduto>
-            <ConteudoProduto>Preço: {data.preco}</ConteudoProduto>
-            <ConteudoProduto>Disponivel: sim{data.disponivel}</ConteudoProduto>
-            <ConteudoProduto>Proprietario: {data.idUser}</ConteudoProduto>
+            <ConteudoProduto>Email: {data.email}</ConteudoProduto>
+            
         </Container>
 
     );
