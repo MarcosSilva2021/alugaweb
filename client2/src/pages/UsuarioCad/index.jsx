@@ -7,12 +7,14 @@ import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, Contain
 
 const UsuarioCad = () => {
     const auth = useContext(AuthContext);
+
+    var token = localStorage.getItem("token", token);
+    console.log("token :", token);
     
     const [produto, setProduto] = useState({
         name: '',
-        preco:  '',
-        disponivel: '',
-        idUser: ''        
+        email: '',
+        password: ''        
     });
 
     // Respostas recebidas
@@ -26,10 +28,11 @@ const UsuarioCad = () => {
     const cadProduto = async e =>{
         e.preventDefault();
         console.log("produto antes de enviou:", produto);
-        await fetch("http://localhost:7000/inserirproduto", {
+        await fetch("http://localhost:7000/inserirusuario", {
             method: 'POST',
             headers: {                
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify({...produto})
         })
@@ -48,28 +51,27 @@ const UsuarioCad = () => {
                 });
                 setProduto({
                     name: '',
-                    preco:  '',
-                    disponivel: '',
-                    idUser: ''
+                    email: '',
+                    password: ''
                 });
             }           
         })
         .catch(() => {
                 setStatus({
                     type: 'erro',
-                    mensagem: 'Produto não cadastrado, Tente mais tarde !'
+                    mensagem: 'Usuário não cadastrado, Tente mais tarde !'
                 });
         });
     }
-    produto.idUser = parseInt(auth.user?.id , 10);
+    //produto.idUser = parseInt(auth.user?.id , 10);
 
     return (
         <Container >
             <ConteudoForm>
                 <ConteudoTitulo>
-                <Titulo>Cadastrar Produto</Titulo>             
+                <Titulo>Cadastrar Usuario</Titulo>             
                 <BotaoAcao>                    
-                    <Link to="/">
+                    <Link to="/userslogin">
                         <ButtonInfo>Listar</ButtonInfo>
                     </Link>                    
                 </BotaoAcao>
@@ -78,19 +80,13 @@ const UsuarioCad = () => {
                 {status.type === 'sucess'? <AlertaSucess>{status.mensagem }</AlertaSucess> : "" }
                 <Form className="form" onSubmit={cadProduto}>
                     <Label >Nome: </Label>
-                    <Input type="text" name="name" placeholder="Nome do produto" onChange={valorInput} value={produto.name}/><br/><br/>
+                    <Input type="text" name="name" placeholder="Nome do Usuário" onChange={valorInput} value={produto.name}/><br/><br/>
 
-                    <Label >Preço: </Label>
-                    <Input type="number" name="preco" placeholder="Preço do produto" onChange={valorInput} value={produto.preco}/><br/><br/>
+                    <Label >Email: </Label>
+                    <Input type="email" name="email" placeholder="Email do Usuário" onChange={valorInput} value={produto.email}/><br/><br/>
                     
-                    <Label >Disponivel: </Label>
-                    <ContainerRadio>
-                    <input type="radio" name="disponivel" value="1" onChange={valorInput} /> Sim <br/><br/>
-                    <input type="radio" name="disponivel" value="0" onChange={valorInput} /> Não <br/>
-                    </ContainerRadio><br/>
-
-                    <Label > Este é o seu ID</Label>
-                    <Input type="number" name="idUser" placeholder="Proprietario do produto" onChange={valorInput} value={produto.idUser}/><br/><br/>
+                    <Label >Senha do Usuário </Label>
+                    <Input type="password" name="password" placeholder="Senha do Usuário" onChange={valorInput} value={produto.password}/><br/><br/>
 
                     <DivButton>
                     <ButtonSuccess type="submit">Cadastrar</ButtonSuccess>{" "}
