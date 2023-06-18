@@ -14,6 +14,11 @@ import ProdutoCad from "./pages/ProdutoCad";
 import {ProdutoVi} from "./pages/ProdutoVi";
 import {ProdutoEdit} from "./pages/ProdutoEdit";
 import {ProdutoExcl} from "./pages/ProdutoExcl";
+import Usuarios from "./pages/Usuarios";
+import UsuarioCad from "./pages/UsuarioCad";
+import {UsuarioEdit} from "./pages/UsuarioEdit";
+import {UsuarioVi} from "./pages/UsuarioVi";
+import {UsuarioExcl} from "./pages/UsuarioExcl"
 import Nav from "./Components/nav";
 import Footer from "./Components/Footer";
 
@@ -48,6 +53,12 @@ const AppRoutes = () => {
                     <Route path="/buscarproduto/:id" Component={ProdutoVi}/>
                     <Route path="/alterarproduto/:id" Component={ProdutoEdit}/>
                     <Route path="/deletarproduto/:id" Component={ProdutoExcl}/>
+                    
+                    <Route exact path="/userslogin" element={<Usuarios /> }/>
+                    <Route exact path="/inserirusuario" element={<UsuarioCad /> }/>
+                    <Route path="/buscarumseq/:id" Component={UsuarioVi}/>
+                    <Route path="/alterarusuario/:id" Component={UsuarioEdit}/>
+                    <Route path="/deletarusuario/:id" Component={UsuarioExcl}/>
                 </Routes>   
             </AuthProvider>  
             <footer><Footer/></footer>       
@@ -56,11 +67,3 @@ const AppRoutes = () => {
 }
 
 export default AppRoutes;
-
-/**
- *              <Link to="/home">Homepage--privado --  </Link>      
-                <Link to="/login"> Página de Logig_____Aberta -- </Link>
-                <Link to="/">Página de Produtos____Aberta -- </Link>
-                <Link to="/produtocad"> ___Cadastrar___Produtos  </Link>
- * 
- */
