@@ -82,7 +82,7 @@ export const ProdutoEdit = () => {
                     <Titulo>Editar</Titulo>
                     <BotaoAcao>                    
                     <Link to="/">
-                        <ButtonInfo>listar</ButtonInfo>
+                        <ButtonInfo>Listar</ButtonInfo>
                     </Link>                    
                 </BotaoAcao>
                 </ConteudoTitulo>
