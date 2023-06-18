@@ -1,7 +1,7 @@
 import React ,{useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, ContainerRadio, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonWarning} from "./styles";
+import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonWarning} from "./styles";
 
 
 export const UsuarioEdit = () => {
@@ -81,7 +81,7 @@ export const UsuarioEdit = () => {
                     <Titulo>Editar</Titulo>
                     <BotaoAcao>                    
                     <Link to="/userslogin">
-                        <ButtonInfo>Listar</ButtonInfo>
+                        <ButtonInfo>Listar Usuários</ButtonInfo>
                     </Link>                    
                 </BotaoAcao>
                 </ConteudoTitulo>
