@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import {Link} from 'react-router-dom';
-import {AuthContext} from "../../contexts/auth";
 
-import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, ContainerRadio, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonSuccess, ButtonClear, DivButton} from "./styles";
+
+import { Container, ConteudoForm, ConteudoTitulo, BotaoAcao, ButtonInfo, Titulo, AlertaSucess, AlertaDanger, Form, Label, Input, ButtonSuccess, ButtonClear, DivButton} from "./styles";
 //import "./styles.css";
 
 const UsuarioCad = () => {
-    const auth = useContext(AuthContext);
+   // const auth = useContext(AuthContext);
 
     var token = localStorage.getItem("token", token);
     console.log("token :", token);
@@ -63,7 +63,7 @@ const UsuarioCad = () => {
                 });
         });
     }
-    //produto.idUser = parseInt(auth.user?.id , 10);
+    
 
     return (
         <Container >
