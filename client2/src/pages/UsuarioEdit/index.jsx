@@ -15,9 +15,8 @@ export const UsuarioEdit = () => {
     const [id3] = useState(id);
     // recebendo os dados individualemte
     const [name, setName] = useState('');
-    const [preco, setPreco] = useState('');
-    const [disponivel, setDisponivel] = useState('');
-    const [idUser, setIduser] = useState('');
+    const [email, setEmail] = useState('');
+    
     
     // Respostas recebidas
     const [status, setStatus] = useState({
@@ -29,12 +28,13 @@ export const UsuarioEdit = () => {
         e.preventDefault();
         //console.log(name);
 
-        await fetch("http://localhost:7000/alterarproduto/", {
+        await fetch("http://localhost:7000/alterarusuario/", {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                //'Authorization': 'Bearer ' + token
             },
-            body: JSON.stringify({ id, name, preco, disponivel, idUser})
+            body: JSON.stringify({ id, name, email})
         })
         .then((response) => response.json())
         .then((responseJson) => {
@@ -62,14 +62,13 @@ export const UsuarioEdit = () => {
 
     useEffect(() => {
         const getProduto = async () => {
-            await fetch("http://localhost:7000/buscarproduto/" + id3)
+            await fetch("http://localhost:7000/buscarumseq/" + id3)
                 .then((response) => response.json())
                 .then((responseJson) => {
                     console.log(responseJson);
-                    setName(responseJson.produto.name);
-                    setPreco(responseJson.produto.preco);
-                    setDisponivel(responseJson.produto.disponivel);
-                    setIduser(responseJson.produto.idUser);
+                    setName(responseJson.user.name);
+                    setEmail(responseJson.user.email);
+                    
                 });
         }
         getProduto();
@@ -81,7 +80,7 @@ export const UsuarioEdit = () => {
                 <ConteudoTitulo>
                     <Titulo>Editar</Titulo>
                     <BotaoAcao>                    
-                    <Link to="/">
+                    <Link to="/userslogin">
                         <ButtonInfo>Listar</ButtonInfo>
                     </Link>                    
                 </BotaoAcao>
@@ -93,18 +92,9 @@ export const UsuarioEdit = () => {
                     <Label >Nome: </Label>
                     <Input type="text" name="name" placeholder="Nome do produto" value={name} onChange={e => setName(e.target.value)} />
 
-                    <Label >Preço: </Label>
-                    <Input type="number" name="preco" placeholder="Preço do produto" value={preco}  onChange={e => setPreco(e.target.value)}/>
-                    
-                    <Label >Disponivel: </Label>
-                    <ContainerRadio>
-                    <input type="radio" name="disponivel" value="1"  onChange={e => setDisponivel(e.target.value)}/> Sim <br/><br/>
-                    <input type="radio" name="disponivel" value="0"  onChange={e => setDisponivel(e.target.value)}/> Não <br/>
-                    </ContainerRadio>
-
-                    <Label >Proprietario: </Label>
-                    <Input type="number" name="idUser" placeholder="Proprietario do produto" value={idUser} onChange={e => setIduser(e.target.value)}/>
-
+                    <Label >Email: </Label>
+                    <Input type="email" name="email" placeholder="seu email" value={email}  onChange={e => setEmail(e.target.value)}/>
+                   
                     <ButtonWarning type="submit">Editar</ButtonWarning>                         
 
                 </Form>
