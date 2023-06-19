@@ -75,9 +75,7 @@ const Operacoes = () => {
                                 <Link to={"/alugar/" + produto.id }>
                                     <ButtonPrimary>Alugar este produto</ButtonPrimary>
                                 </Link>{" "}
-                                <Link to={"/excluirprodalugado/" + produto.id }>
-                                    <ButtonDanger>Devolver este produto</ButtonDanger>
-                                </Link>                                                       
+                                                                                      
                             </td>
                         </tr>
                     ))}
