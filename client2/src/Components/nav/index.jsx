@@ -20,36 +20,44 @@ const Nav = () => {
     return (
         <Container>
             <ConteudoTitulo>
-            <Titulo>Aluga na Web</Titulo>                                                    
-            
-    
+            <Titulo>Aluga na Web</Titulo>                                                 
+                
                 <Alertauser>
                 {msg}{"  "}<strong>{auth.user?.name}</strong>
                 </Alertauser>                                      
             
                 </ConteudoTitulo>
             <ConteudoTitulo1>            
-                 
-                <BotaoAcao>
-                    <Link to="/buscarprodutalugados">
-                        <ButtonSuccess>Operações Realizadas</ButtonSuccess>
-                    </Link>
-                </BotaoAcao>           
+           
+                {auth.user &&
+                    <BotaoAcao>
+                        <Link to="/buscarprodutalugados">
+                            <ButtonSuccess>Produtos Disponiveis para Você</ButtonSuccess>
+                        </Link>
+                    </BotaoAcao>
+                }
+
                 <BotaoAcao>
                     <Link to="/">
                         <ButtonSuccess>Produtos</ButtonSuccess>
                     </Link>
-                </BotaoAcao> 
-                <BotaoAcao>
-                    <Link to="/produtocad">
-                        <ButtonSuccess>Cadastrar</ButtonSuccess>
-                    </Link>
-                </BotaoAcao> 
-                <BotaoAcao>
-                    <Link to="/userslogin">
-                        <ButtonSuccess>Usuários do Sistema</ButtonSuccess>
-                    </Link>
                 </BotaoAcao>
+                
+                {auth.user &&
+                    <BotaoAcao>
+                        <Link to="/produtocad">
+                            <ButtonSuccess>Cadastrar Um Produto</ButtonSuccess>
+                        </Link>
+                    </BotaoAcao>
+                } 
+                
+                {auth.user &&
+                    <BotaoAcao>
+                        <Link to="/userslogin">
+                            <ButtonSuccess>Usuários do Sistema</ButtonSuccess>
+                        </Link>
+                    </BotaoAcao>
+                } 
                 
                 {!auth.user &&
                     <BotaoAcao>

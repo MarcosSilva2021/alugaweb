@@ -6,22 +6,22 @@ export const Titulo = styled.h1`
         padding: 10px;  
 `;
 //exibir mensagens
-export const AlertaSucess = styled.p`
-        background-color: #d1e7dd;
-        color: #0f5132;
-        margin: 20px 0;
-        border: 1px solid #badbcc;
-        border-radius: 4px;
-        padding: 7px;
+export const Fotli = styled.li`
+        display: inline-block;
+        margin: 0 10px;
+`;
+//ul
+export const Ul = styled.ul`
+list-style: none;
+padding: 0;
+margin: 0;
 `;
 
 export const Rodape = styled.p`
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #3e3e3e;
-    color: #ffffff;
-    box-sizing: border-box;
+background-color: #333;
+color: #fff;
+padding: 0px;
+text-align: center;
+margin-top: 0px;
 `;
+//
