@@ -15,13 +15,14 @@ const ProdutoPag = () => {
 
     // Função com a requisição para API recuperar usuários
     const getProdutos = async (page) => {
+        console.log("Numero página0 : ",page);
         if (page === undefined){
             page = 1;            
         };
         setPage(page);
         console.log("Numero página: ",page);
         
-            fetch("http://localhost:7000/buscartodospag?page" + page)
+            fetch("http://localhost:7000/buscartodospag?page=" + page)
             .then((response) => response.json())
             .then((responseJson) => {
                 //console.log(responseJson),
@@ -90,7 +91,14 @@ const ProdutoPag = () => {
                 </tbody>
                 
             </Table>
-            <button type='button' onClick={() => getProdutos(1)} >Primeira</button>
+            {page !== 1 ? <button type='button' onClick={() => getProdutos(1)} >Primeira</button>
+            : <button type='button' disabled>Primeira</button>    }
+            {" "}
+            {page !== 1 ? <button type='button' onClick={() => getProdutos(page - 1) }>{page - 1}</button>: ""}{" "}
+            <button type='button' disabled>{page}</button>{" "}
+            {page !== lastPage ? <button type='button' onClick={() => getProdutos(lastPage)} >Última</button>
+            : <button type='button' disabled>Última</button>    }
+            {" "}
             <br/><br/><br/><br/>
         </Container>
         

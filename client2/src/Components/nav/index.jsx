@@ -37,7 +37,7 @@ const Nav = () => {
                     </BotaoAcao>
                 }
                 <BotaoAcao>
-                    <Link to="/buscarprodalugadospag">
+                    <Link to="/buscartodospag">
                         <ButtonSuccess>Produtos Paginação</ButtonSuccess>
                     </Link>
                 </BotaoAcao>
