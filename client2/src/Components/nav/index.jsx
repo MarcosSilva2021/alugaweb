@@ -36,6 +36,11 @@ const Nav = () => {
                         </Link>
                     </BotaoAcao>
                 }
+                <BotaoAcao>
+                    <Link to="/buscarprodalugadospag">
+                        <ButtonSuccess>Produtos Paginação</ButtonSuccess>
+                    </Link>
+                </BotaoAcao>
 
                 <BotaoAcao>
                     <Link to="/">
