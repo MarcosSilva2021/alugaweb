@@ -95,7 +95,11 @@ const ProdutoPag = () => {
             : <button type='button' disabled>Primeira</button>    }
             {" "}
             {page !== 1 ? <button type='button' onClick={() => getProdutos(page - 1) }>{page - 1}</button>: ""}{" "}
+
             <button type='button' disabled>{page}</button>{" "}
+
+            {page + 1 <= lastPage ?  <button type="button" onClick={() => getProdutos(page + 1)} >{page + 1}</button>: ""}{" "}            
+
             {page !== lastPage ? <button type='button' onClick={() => getProdutos(lastPage)} >Última</button>
             : <button type='button' disabled>Última</button>    }
             {" "}
